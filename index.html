@@ -234,7 +234,7 @@ button{font-family:inherit}
 .doc-card{background:#fff;border:1.5px solid var(--border);border-radius:18px;overflow:hidden;margin-top:12px}
 .doc-header-bar{background:linear-gradient(90deg,var(--blue-dk),#1565C0);padding:9px 14px;display:flex;align-items:center;gap:7px;color:#fff;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .doc-body{padding:14px;display:flex;gap:12px;align-items:flex-start}
-.doc-avatar{width:52px;height:52px;flex-shrink:0;border-radius:50%;background:var(--blue-pale);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px}
+.doc-avatar{width:52px;height:52px;flex-shrink:0;border-radius:50%;background:var(--blue-pale);border:2px solid var(--border);overflow:hidden;object-fit:cover}
 .doc-quote{font-size:12px;color:var(--muted);line-height:1.7;font-style:italic;margin-bottom:8px}
 .doc-quote strong{color:var(--text);font-style:normal}
 .doc-name{font-size:12px;font-weight:700;color:var(--blue-dk)}
@@ -576,7 +576,7 @@ button{font-family:inherit}
           <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
         <div style="position:absolute;bottom:10px;left:12px;display:flex;align-items:center;gap:7px">
-          <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:16px">👩‍⚕️</div>
+          <img src="images/doctors/doctor-1.jpg" style="width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.5)"/>
           <div>
             <div style="font-size:11px;font-weight:700;color:#fff">Dr. Elena Popescu</div>
             <div style="font-size:9px;color:rgba(255,255,255,.7)">Medic Primar Pediatrie</div>
@@ -596,7 +596,7 @@ button{font-family:inherit}
           <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
         <div style="position:absolute;bottom:10px;left:12px;display:flex;align-items:center;gap:7px">
-          <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:16px">👨‍⚕️</div>
+          <img src="images/doctors/doctor-2.jpg" style="width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.5)"/>
           <div>
             <div style="font-size:11px;font-weight:700;color:#fff">Dr. Mihai Ionescu</div>
             <div style="font-size:9px;color:rgba(255,255,255,.7)">Medic Specialist Pulmonologie</div>
@@ -616,7 +616,7 @@ button{font-family:inherit}
           <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
         <div style="position:absolute;bottom:10px;left:12px;display:flex;align-items:center;gap:7px">
-          <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:16px">👩‍⚕️</div>
+          <img src="images/doctors/doctor-3.jpg" style="width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.5)"/>
           <div>
             <div style="font-size:11px;font-weight:700;color:#fff">Dr. Ana Dumitrescu</div>
             <div style="font-size:9px;color:rgba(255,255,255,.7)">Medic Specialist Pediatrie</div>
@@ -1053,7 +1053,7 @@ button{font-family:inherit}
       Medic Verificat
     </div>
     <div class="doc-body">
-      <div class="doc-avatar">👩‍⚕️</div>
+      <img class="doc-avatar" src="images/doctors/doctor-1.jpg" alt="Dr. Elena Popescu"/>
       <div>
         <p class="doc-quote">„Recomand nebulizatoarele mesh tuturor pacienților mei. <strong>RespiraGo este primul pe care îl văd acceptat de copii din prima sesiune.</strong> Zgomotul aparatelor clasice era principalul motiv pentru care sesiunile nu se terminau."</p>
         <div class="doc-name">Dr. Elena Popescu</div>
@@ -1068,7 +1068,7 @@ button{font-family:inherit}
       Medic Verificat
     </div>
     <div class="doc-body">
-      <div class="doc-avatar">👨‍⚕️</div>
+      <img class="doc-avatar" src="images/doctors/doctor-2.jpg" alt="Dr. Mihai Ionescu"/>
       <div>
         <p class="doc-quote">„Tehnologia mesh cu particule de 1–5 microni este standardul de aur în terapia inhalatorie modernă. <strong>RespiraGo aduce această tehnologie la un preț accesibil familiei obișnuite.</strong>"</p>
         <div class="doc-name">Dr. Mihai Ionescu</div>
