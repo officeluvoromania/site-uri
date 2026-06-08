@@ -55,7 +55,7 @@ button{font-family:inherit}
 
 /* ══ HERO (full-bleed) ══ */
 .hero{background:#fff;position:relative}
-.hero-main-img{width:100%;aspect-ratio:1/1;background:linear-gradient(160deg,#dbeafe 0%,#eff6ff 55%,#c7e3fa 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-main-img{width:100%;aspect-ratio:1/1;background:#f0f6ff;display:block;position:relative;overflow:hidden}
 .hero-main-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(240,248,255,.55) 100%);pointer-events:none}
 .hero-main-placeholder{display:flex;flex-direction:column;align-items:center;gap:14px;color:var(--blue);position:relative;z-index:1}
 .hero-main-placeholder svg{filter:drop-shadow(0 24px 48px rgba(27,94,168,.22))}
@@ -355,42 +355,27 @@ button{font-family:inherit}
 <div class="hero">
 
   <!-- Main product image (full bleed) -->
-  <div class="hero-main-img">
-    <div class="hero-main-placeholder">
-      <svg width="160" height="200" viewBox="0 0 160 200" fill="none">
-        <!-- device body -->
-        <rect x="44" y="20" width="72" height="140" rx="28" fill="white" stroke="#1B5EA8" stroke-width="2.5" opacity=".85"/>
-        <rect x="54" y="28" width="52" height="70" rx="18" fill="#EEF5FF"/>
-        <!-- mesh logo area -->
-        <circle cx="80" cy="62" r="22" fill="#DBEAFE"/>
-        <circle cx="80" cy="62" r="14" fill="#4A9FD4" opacity=".5"/>
-        <circle cx="80" cy="62" r="7" fill="#1B5EA8" opacity=".9"/>
-        <!-- top button -->
-        <rect x="69" y="32" width="22" height="6" rx="3" fill="#1B5EA8" opacity=".3"/>
-        <!-- usb port -->
-        <rect x="72" y="150" width="16" height="4" rx="2" fill="#1B5EA8" opacity=".25"/>
-        <!-- mist particles -->
-        <circle cx="52" cy="105" r="5" fill="#4A9FD4" opacity=".45"/>
-        <circle cx="44" cy="116" r="3.5" fill="#4A9FD4" opacity=".3"/>
-        <circle cx="38" cy="103" r="2.5" fill="#4A9FD4" opacity=".22"/>
-        <circle cx="108" cy="108" r="5" fill="#4A9FD4" opacity=".4"/>
-        <circle cx="116" cy="120" r="3.5" fill="#4A9FD4" opacity=".28"/>
-        <circle cx="122" cy="105" r="2.5" fill="#4A9FD4" opacity=".2"/>
-        <!-- indicator light -->
-        <circle cx="80" cy="135" r="5" fill="#22D3EE" opacity=".75"/>
-        <circle cx="80" cy="135" r="2.5" fill="white"/>
-      </svg>
-      <span>Imagine produs</span>
-    </div>
+  <div class="hero-main-img" id="hero-main-img-wrap">
+    <img src="images/hero/hero-5.jpg" alt="RespiraGo — Aerosol Portabil MicroMist CleanFlow" id="hero-main-img-el" style="width:100%;height:100%;object-fit:cover;display:block"/>
   </div>
 
   <!-- Thumbnail strip -->
   <div class="hero-thumbs" id="hero-thumbs">
-    <div class="hero-thumb active" onclick="selectThumb(this,0)">💧</div>
-    <div class="hero-thumb" onclick="selectThumb(this,1)">🎭</div>
-    <div class="hero-thumb" onclick="selectThumb(this,2)">🧩</div>
-    <div class="hero-thumb" onclick="selectThumb(this,3)">📦</div>
-    <div class="hero-thumb" onclick="selectThumb(this,4)">🌬️</div>
+    <div class="hero-thumb active" onclick="selectThumb(this,'images/hero/hero-5.jpg')">
+      <img src="images/hero/hero-5.jpg" alt="" style="width:100%;height:100%;object-fit:cover"/>
+    </div>
+    <div class="hero-thumb" onclick="selectThumb(this,'images/hero/hero-3.jpg')">
+      <img src="images/hero/hero-3.jpg" alt="" style="width:100%;height:100%;object-fit:cover"/>
+    </div>
+    <div class="hero-thumb" onclick="selectThumb(this,'images/hero/hero-4.jpg')">
+      <img src="images/hero/hero-4.jpg" alt="" style="width:100%;height:100%;object-fit:cover"/>
+    </div>
+    <div class="hero-thumb" onclick="selectThumb(this,'images/hero/hero-2.jpg')">
+      <img src="images/hero/hero-2.jpg" alt="" style="width:100%;height:100%;object-fit:cover"/>
+    </div>
+    <div class="hero-thumb" onclick="selectThumb(this,'images/hero/hero-1.jpg')">
+      <img src="images/hero/hero-1.jpg" alt="" style="width:100%;height:100%;object-fit:cover"/>
+    </div>
   </div>
 
   <!-- Product info -->
@@ -1175,9 +1160,10 @@ button{font-family:inherit}
 })();
 
 /* ════ THUMBNAILS ════ */
-function selectThumb(el, idx){
+function selectThumb(el, src){
   document.querySelectorAll('.hero-thumb').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
+  document.getElementById('hero-main-img-el').src = src;
 }
 
 /* ════ PKG SELECTOR ════ */
