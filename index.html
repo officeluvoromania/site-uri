@@ -36,6 +36,27 @@ button{font-family:inherit}
 .fade{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
 .fade.in{opacity:1;transform:translateY(0)}
 
+/* ── Testimoniale carousel (after hero) ── */
+.testi-carousel-section{background:#fff;border-bottom:1px solid var(--border);padding:16px 0 20px}
+.tc-header{display:flex;align-items:center;gap:8px;padding:0 16px 14px}
+.tc-score{font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:var(--blue-dk)}
+.tc-count{font-size:12px;color:var(--muted)}
+.tc-wrap{overflow:hidden;position:relative}
+.tc-track{display:flex;transition:transform .42s cubic-bezier(.4,0,.2,1)}
+.tc-slide{min-width:calc(100% - 32px);margin:0 8px;flex-shrink:0}
+.tc-slide:first-child{margin-left:16px}
+.tc-slide:last-child{margin-right:16px}
+.tc-card{background:var(--blue-pale);border:1.5px solid var(--border);border-radius:18px;padding:18px 16px}
+.tc-quote{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:14px}
+.tc-quote strong{color:var(--blue-dk)}
+.tc-author-row{display:flex;align-items:center;gap:10px}
+.tc-avatar{width:34px;height:34px;border-radius:50%;background:var(--blue-pale);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--blue);flex-shrink:0}
+.tc-name{font-size:12px;font-weight:700;color:var(--blue-dk)}
+.tc-city{font-size:11px;color:var(--light);margin-top:1px}
+.tc-dots{display:flex;justify-content:center;gap:6px;margin-top:14px;padding:0 16px}
+.tc-dot{width:6px;height:6px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .25s;border:none;padding:0}
+.tc-dot.active{background:var(--blue);width:18px;border-radius:100px}
+
 /* ── Announce ── */
 .announce{background:var(--blue-dk);color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em;padding:10px 0;overflow:hidden}
 .announce-track{display:inline-flex;gap:48px;white-space:nowrap;animation:ticker 22s linear infinite}
@@ -353,6 +374,114 @@ button{font-family:inherit}
       <h1 class="hero-title">Motivul pentru care <em>7 din 10 copii</em> refuză aerosolii clasici — și cum RespiraGo rezolvă asta <em>din prima sesiune.</em></h1>
       <p class="hero-sub">Tehnologia MicroMist CleanFlow™ · Silențios · Portabil · Kit complet</p>
     </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALE CAROUSEL -->
+<div class="testi-carousel-section">
+  <div class="tc-header">
+    <span class="stars" style="font-size:17px">★★★★★</span>
+    <span class="tc-score">4.8</span>
+    <span class="tc-count">din 752 review-uri verificate</span>
+  </div>
+
+  <div class="tc-wrap">
+    <div class="tc-track" id="tc-track">
+
+      <div class="tc-slide">
+        <div class="tc-card">
+          <div class="tc-quote">"Nu mai plânge la aerosoli. <strong>Prima sesiune în care a stat până la capăt.</strong> Am plâns și eu de fericire."</div>
+          <div class="tc-author-row">
+            <div class="tc-avatar">A</div>
+            <div>
+              <div class="tc-name">Andreea M.</div>
+              <div class="tc-city">București · mama lui Radu, 2 ani</div>
+            </div>
+            <div class="stars" style="font-size:12px;margin-left:auto">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tc-slide">
+        <div class="tc-card">
+          <div class="tc-quote">"<strong>Nu face zgomot ca aparatul vechi.</strong> Casa nu s-a trezit. Și copilul a dormit liniștit după sesiune."</div>
+          <div class="tc-author-row">
+            <div class="tc-avatar" style="background:#e0f2fe;color:#0369a1">I</div>
+            <div>
+              <div class="tc-name">Ioana P.</div>
+              <div class="tc-city">Cluj · mama lui Sofia, 3 ani</div>
+            </div>
+            <div class="stars" style="font-size:12px;margin-left:auto">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tc-slide">
+        <div class="tc-card">
+          <div class="tc-quote">"Se curăță <strong>mai ușor decât mă așteptam.</strong> 3 piese, apă, gata. Am renunțat complet la cel vechi."</div>
+          <div class="tc-author-row">
+            <div class="tc-avatar" style="background:#dcfce7;color:#15803d">M</div>
+            <div>
+              <div class="tc-name">Mirela D.</div>
+              <div class="tc-city">Sibiu · mama lui Matei, 4 ani</div>
+            </div>
+            <div class="stars" style="font-size:12px;margin-left:auto">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tc-slide">
+        <div class="tc-card">
+          <div class="tc-quote">"Am luat 3x. Unul acasă, unul la bunici, unul în bagaj. <strong>Suntem pregătiți oricând, oriunde.</strong>"</div>
+          <div class="tc-author-row">
+            <div class="tc-avatar" style="background:#fef3c7;color:#b45309">R</div>
+            <div>
+              <div class="tc-name">Raluca T.</div>
+              <div class="tc-city">Timișoara · mama Emmei, 18 luni</div>
+            </div>
+            <div class="stars" style="font-size:12px;margin-left:auto">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tc-slide">
+        <div class="tc-card">
+          <div class="tc-quote">"Medicul pediatru ne-a recomandat exact acest tip. <strong>Îl folosim de 3 luni, zero probleme.</strong> Recomand cu toată inima."</div>
+          <div class="tc-author-row">
+            <div class="tc-avatar" style="background:#f3e8ff;color:#7c3aed">C</div>
+            <div>
+              <div class="tc-name">Cristina V.</div>
+              <div class="tc-city">Iași · mama lui Alexandru, 5 ani</div>
+            </div>
+            <div class="stars" style="font-size:12px;margin-left:auto">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tc-slide">
+        <div class="tc-card">
+          <div class="tc-quote">"Nu am mai suna soacra la 22:00 să îi duc aparatul. <strong>2x RespiraGo a rezolvat tot.</strong> Merită fiecare leu."</div>
+          <div class="tc-author-row">
+            <div class="tc-avatar" style="background:#ffe4e6;color:#be123c">L</div>
+            <div>
+              <div class="tc-name">Laura B.</div>
+              <div class="tc-city">Brașov · mama lui David, 2 ani</div>
+            </div>
+            <div class="stars" style="font-size:12px;margin-left:auto">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tc-track -->
+  </div><!-- /tc-wrap -->
+
+  <div class="tc-dots" id="tc-dots">
+    <button class="tc-dot active" onclick="tcGoSlide(0)"></button>
+    <button class="tc-dot" onclick="tcGoSlide(1)"></button>
+    <button class="tc-dot" onclick="tcGoSlide(2)"></button>
+    <button class="tc-dot" onclick="tcGoSlide(3)"></button>
+    <button class="tc-dot" onclick="tcGoSlide(4)"></button>
+    <button class="tc-dot" onclick="tcGoSlide(5)"></button>
   </div>
 </div>
 
@@ -964,6 +1093,19 @@ button{font-family:inherit}
 </div>
 
 <script>
+// ── Testimoniale carousel ─────────────────────────────────
+var tcCur = 0, tcTotal = 6, tcTrack = document.getElementById('tc-track'), tcDots = document.querySelectorAll('.tc-dot'), tcTimer;
+function tcGoSlide(n){
+  tcCur = (n+tcTotal)%tcTotal;
+  tcTrack.style.transform = 'translateX(-'+tcCur+'00%)';
+  tcDots.forEach(function(d,i){ d.classList.toggle('active', i===tcCur); });
+  clearInterval(tcTimer); tcTimer = setInterval(function(){ tcGoSlide(tcCur+1); }, 4000);
+}
+tcTimer = setInterval(function(){ tcGoSlide(tcCur+1); }, 4000);
+var tcTouchX = 0;
+tcTrack.addEventListener('touchstart', function(e){ tcTouchX=e.touches[0].clientX; },{passive:true});
+tcTrack.addEventListener('touchend', function(e){ var dx=e.changedTouches[0].clientX-tcTouchX; if(Math.abs(dx)>40){ dx<0?tcGoSlide(tcCur+1):tcGoSlide(tcCur-1); } },{passive:true});
+
 // ── Package selector ──────────────────────────────────────
 var sel = {price:'149', label:'1x RespiraGo Acasă'};
 document.querySelectorAll('.pkg-card').forEach(function(card){
