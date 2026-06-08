@@ -21,564 +21,305 @@
   --light:    #94A3B8;
   --border:   #D6E8FA;
   --gold:     #F59E0B;
+  --red:      #EF4444;
+  --green:    #16a34a;
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.6}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+.wrap{max-width:480px;margin:0 auto}
+.section-tag{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-lt);margin-bottom:6px}
+.section-title{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--blue-dk);line-height:1.28;margin-bottom:10px}
+.fade{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.fade.in{opacity:1;transform:translateY(0)}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'DM Sans', system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  font-size: 15px;
-  line-height: 1.6;
-}
-.serif { font-family: 'Fraunces', Georgia, serif; }
-img { display: block; max-width: 100%; }
-a { text-decoration: none; color: inherit; }
+/* ── Announce ── */
+.announce{background:var(--blue-dk);color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em;padding:10px 0;overflow:hidden}
+.announce-track{display:inline-flex;gap:48px;white-space:nowrap;animation:ticker 22s linear infinite}
+@keyframes ticker{to{transform:translateX(-50%)}}
 
-/* ── Layout ── */
-.wrap { max-width: 480px; margin: 0 auto; }
-
-/* ── Announce bar ── */
-.announce {
-  background: var(--blue-dk);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .04em;
-  padding: 10px 16px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.announce-track {
-  display: inline-flex;
-  gap: 48px;
-  white-space: nowrap;
-  animation: ticker 20s linear infinite;
-}
-@keyframes ticker { to { transform: translateX(-50%); } }
-
-/* ── Navbar ── */
-.nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(255,255,255,.97);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 1px 12px rgba(13,61,115,.06);
-}
-.nav-inner {
-  max-width: 480px; margin: 0 auto;
-  height: 56px;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 16px;
-}
-.nav-logo {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px; font-weight: 700;
-  letter-spacing: .28em;
-  color: var(--blue-dk);
-  text-transform: uppercase;
-}
-.nav-icon { background: none; border: none; cursor: pointer; display: flex; align-items: center; padding: 6px; color: var(--blue-dk); position: relative; }
-.cart-badge {
-  position: absolute; top: 2px; right: 2px;
-  width: 16px; height: 16px;
-  background: var(--blue); color: #fff;
-  border-radius: 50%; font-size: 9px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-}
+/* ── Nav ── */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);box-shadow:0 1px 12px rgba(13,61,115,.06)}
+.nav-inner{max-width:480px;margin:0 auto;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+.nav-logo{font-size:13px;font-weight:700;letter-spacing:.28em;color:var(--blue-dk);text-transform:uppercase}
+.nav-icon{background:none;border:none;cursor:pointer;display:flex;align-items:center;padding:6px;color:var(--blue-dk);position:relative}
+.cart-badge{position:absolute;top:2px;right:2px;width:16px;height:16px;background:var(--blue);color:#fff;border-radius:50%;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center}
 
 /* ── Hero ── */
-.hero {
-  background: linear-gradient(170deg, #EEF5FF 0%, var(--bg) 60%);
-  padding: 20px 16px 0;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute; top: -60px; right: -60px;
-  width: 260px; height: 260px;
-  background: radial-gradient(circle, rgba(74,159,212,.2) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 6px 12px;
-  font-size: 12px; font-weight: 600;
-  color: var(--blue-dk);
-  box-shadow: 0 2px 8px rgba(13,61,115,.08);
-  margin-bottom: 16px;
-}
-.hero-img-wrap {
-  display: flex; justify-content: center;
-  position: relative;
-  margin: 0 -16px;
-}
-.hero-img-wrap::before {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 240px; height: 80px;
-  background: radial-gradient(ellipse, rgba(27,94,168,.12) 0%, transparent 70%);
-}
-.hero-img {
-  width: 260px; height: 260px;
-  object-fit: contain;
-  filter: drop-shadow(0 16px 32px rgba(27,94,168,.18));
-  position: relative; z-index: 1;
-}
-.hero-img-placeholder {
-  width: 260px; height: 260px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
-  border-radius: 24px;
-  color: var(--blue);
-  font-size: 13px; font-weight: 500;
-  gap: 8px;
-  filter: drop-shadow(0 16px 32px rgba(27,94,168,.15));
-}
-.hero-text { padding: 20px 0 24px; }
-.hero-title {
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 1.22;
-  color: var(--blue-dk);
-  margin-bottom: 10px;
-}
-.hero-title em { font-style: normal; color: var(--blue); }
-.hero-sub { color: var(--muted); font-size: 14px; font-weight: 400; }
+.hero{background:linear-gradient(170deg,#EEF5FF 0%,var(--bg) 65%);padding:20px 16px 0;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;background:radial-gradient(circle,rgba(74,159,212,.18) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--border);border-radius:100px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--blue-dk);box-shadow:0 2px 8px rgba(13,61,115,.08);margin-bottom:16px}
+.hero-img-wrap{display:flex;justify-content:center;position:relative;margin:0 -16px}
+.hero-img-wrap::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:220px;height:60px;background:radial-gradient(ellipse,rgba(27,94,168,.1) 0%,transparent 70%)}
+.hero-img{width:260px;height:260px;object-fit:contain;filter:drop-shadow(0 16px 32px rgba(27,94,168,.2));position:relative;z-index:1}
+.product-placeholder{width:260px;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#dbeafe,#eff6ff);border-radius:24px;color:var(--blue);font-size:12px;font-weight:600;gap:8px;filter:drop-shadow(0 16px 32px rgba(27,94,168,.15))}
+.hero-text{padding:20px 0 24px}
+.hero-title{font-family:'Fraunces',serif;font-size:27px;font-weight:600;line-height:1.22;color:var(--blue-dk);margin-bottom:10px}
+.hero-title em{font-style:normal;color:var(--blue)}
+.hero-sub{color:var(--muted);font-size:14px}
 
-/* ── Rating bar ── */
-.rating-bar {
-  background: #fff;
-  border-bottom: 1px solid var(--border);
-  padding: 12px 16px;
-  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-}
-.stars { color: var(--gold); font-size: 15px; letter-spacing: 1px; }
-.rating-num { font-family: 'Fraunces', serif; font-weight: 600; color: var(--blue-dk); }
-.rating-dot { color: var(--border); font-size: 12px; }
-.rating-link { font-size: 13px; color: var(--blue); font-weight: 500; cursor: pointer; border-bottom: 1px solid var(--blue-soft); }
-.rating-count { font-size: 13px; color: var(--muted); }
+/* ── Rating ── */
+.rating-bar{background:#fff;border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.stars{color:var(--gold);font-size:15px;letter-spacing:1px}
+.rating-num{font-family:'Fraunces',serif;font-weight:600;color:var(--blue-dk)}
+.rating-dot{color:var(--border);font-size:12px}
+.rating-link{font-size:13px;color:var(--blue);font-weight:500;cursor:pointer;border-bottom:1px solid var(--blue-soft)}
+.rating-count{font-size:13px;color:var(--muted)}
 
-/* ── Section ── */
-.section { background: #fff; padding: 20px 16px; border-bottom: 1px solid var(--border); }
-.section-tag {
-  font-size: 10px; font-weight: 700; letter-spacing: .14em;
-  text-transform: uppercase; color: var(--blue-lt);
-  margin-bottom: 6px;
-}
-.section-title {
-  font-family: 'Fraunces', serif;
-  font-size: 22px; font-weight: 600; color: var(--blue-dk);
-  line-height: 1.3; margin-bottom: 8px;
-}
-.section-desc { color: var(--muted); font-size: 14px; line-height: 1.65; margin-bottom: 16px; }
+/* ── Product info ── */
+.prod-section{background:#fff;padding:20px 16px;border-bottom:1px solid var(--border)}
+.prod-desc{color:var(--muted);font-size:14px;line-height:1.65;margin-bottom:16px}
+.benefits{display:flex;flex-direction:column;gap:10px}
+.benefit-item{display:flex;align-items:flex-start;gap:10px}
+.benefit-check{width:20px;height:20px;flex-shrink:0;background:var(--blue-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.benefit-text{font-size:14px;font-weight:500;color:var(--text);line-height:1.5}
 
-/* ── Benefit chips ── */
-.benefits { display: flex; flex-direction: column; gap: 10px; }
-.benefit-item { display: flex; align-items: flex-start; gap: 10px; }
-.benefit-check {
-  width: 20px; height: 20px; flex-shrink: 0;
-  background: var(--blue-pale);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  margin-top: 2px;
-}
-.benefit-check svg { display: block; }
-.benefit-text { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.5; }
+/* ══════════════════════════════════════════
+   INVALIDARE SOLUȚII — "De ce altele nu merg"
+══════════════════════════════════════════ */
+.invalid-section{padding:28px 16px;background:var(--bg)}
+.invalid-intro{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px}
+.invalid-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.invalid-card{background:#fff;border:1.5px solid var(--border);border-radius:18px;overflow:hidden;display:flex;align-items:stretch;box-shadow:0 2px 12px rgba(13,61,115,.04)}
+.invalid-icon-col{width:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#FFF1F1,#FFE4E4)}
+.invalid-content{padding:14px 14px 14px 12px;flex:1}
+.invalid-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:3px}
+.invalid-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px}
+.invalid-desc{font-size:12px;color:var(--muted);line-height:1.55}
+.invalid-solution{background:linear-gradient(135deg,var(--blue-dk),var(--blue));border-radius:18px;padding:18px 16px;color:#fff;display:flex;align-items:flex-start;gap:12px}
+.invalid-sol-icon{width:40px;height:40px;flex-shrink:0;background:rgba(255,255,255,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.invalid-sol-title{font-family:'Fraunces',serif;font-size:16px;font-weight:600;margin-bottom:4px}
+.invalid-sol-desc{font-size:13px;color:rgba(255,255,255,.8);line-height:1.6}
 
-/* ── Package selector ── */
-.pkg-section { background: #fff; padding: 20px 16px 0; }
-.pkg-cards { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-.pkg-card {
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 14px 16px;
-  cursor: pointer;
-  position: relative;
-  transition: border-color .2s, box-shadow .2s;
-  background: #fff;
-  overflow: hidden;
-}
-.pkg-card:hover { border-color: var(--blue-lt); }
-.pkg-card.active { border-color: var(--blue); background: #f0f7ff; box-shadow: 0 0 0 1px var(--blue); }
-.pkg-badge {
-  display: inline-flex;
-  background: var(--blue-pale); color: var(--blue);
-  font-size: 10px; font-weight: 700; letter-spacing: .08em;
-  text-transform: uppercase;
-  border-radius: 100px; padding: 3px 10px;
-  margin-bottom: 8px;
-}
-.pkg-ribbon {
-  position: absolute; top: 0; right: 0;
-  background: var(--blue);
-  color: #fff;
-  font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-  padding: 4px 12px 4px 16px;
-  clip-path: polygon(10px 0%, 100% 0%, 100% 100%, 0% 100%);
-}
-.pkg-row { display: flex; align-items: flex-start; gap: 12px; }
-.pkg-radio {
-  width: 20px; height: 20px; flex-shrink: 0;
-  border: 2px solid var(--border); border-radius: 50%;
-  margin-top: 4px;
-  display: flex; align-items: center; justify-content: center;
-  transition: border-color .2s, background .2s;
-}
-.pkg-card.active .pkg-radio { border-color: var(--blue); background: var(--blue); }
-.pkg-radio-dot {
-  width: 8px; height: 8px; border-radius: 50%; background: #fff;
-  opacity: 0; transition: opacity .2s;
-}
-.pkg-card.active .pkg-radio-dot { opacity: 1; }
-.pkg-info { flex: 1; }
-.pkg-name { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
-.pkg-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
-.pkg-prices { text-align: right; flex-shrink: 0; }
-.pkg-price-main {
-  font-family: 'Fraunces', serif;
-  font-size: 24px; font-weight: 700; color: var(--blue-dk);
-  line-height: 1;
-}
-.pkg-price-unit { font-size: 12px; color: var(--muted); margin-top: 2px; }
-.pkg-price-old { font-size: 12px; color: var(--light); text-decoration: line-through; }
-.pkg-savings { font-size: 11px; color: #16a34a; font-weight: 600; margin-top: 4px; }
+/* ══════════════════════════════════════════
+   MECANISM — Carousel tehnologie
+══════════════════════════════════════════ */
+.mech-section{padding:28px 0 32px;background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.mech-header{padding:0 16px 20px}
+.carousel-wrap{position:relative;overflow:hidden}
+.carousel-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1);will-change:transform}
+.carousel-slide{min-width:100%;padding:0 16px}
+.mech-card{background:var(--blue-pale);border:1.5px solid var(--border);border-radius:20px;overflow:hidden}
+.mech-graphic{height:180px;display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(135deg,#dbeafe 0%,#eff6ff 100%)}
+.mech-step-num{position:absolute;top:12px;left:14px;width:28px;height:28px;background:var(--blue);color:#fff;border-radius:50%;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.mech-body{padding:16px}
+.mech-name{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:var(--blue-dk);margin-bottom:5px}
+.mech-desc{font-size:13px;color:var(--muted);line-height:1.65}
+.mech-highlight{display:inline-block;background:var(--blue);color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-top:8px}
+.carousel-dots{display:flex;justify-content:center;gap:7px;margin-top:16px;padding:0 16px}
+.c-dot{width:7px;height:7px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .25s;border:none;padding:0}
+.c-dot.active{background:var(--blue);width:20px;border-radius:100px}
+.carousel-btns{display:flex;gap:8px;justify-content:center;margin-top:12px;padding:0 16px}
+.c-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--blue-dk);transition:all .2s}
+.c-btn:hover{background:var(--blue-pale);border-color:var(--blue)}
 
-/* ── Add-on ── */
-.addon {
-  margin: 10px 0;
-  border: 1.5px dashed var(--border);
-  border-radius: 12px;
-  padding: 12px 14px;
-  display: flex; align-items: flex-start; gap: 10px;
-  cursor: pointer;
-}
-.addon input[type=checkbox] { accent-color: var(--blue); margin-top: 2px; flex-shrink: 0; cursor: pointer; width: 16px; height: 16px; }
-.addon-text { font-size: 13px; color: var(--text); line-height: 1.5; }
-.addon-text strong { color: var(--blue-dk); }
+/* ══════════════════════════════════════════
+   US VS THEM
+══════════════════════════════════════════ */
+.uvt-section{padding:28px 16px;background:var(--bg)}
+.uvt-intro{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px}
+.uvt-table{background:#fff;border:1.5px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(13,61,115,.06)}
+.uvt-header{display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--bg);border-bottom:1.5px solid var(--border)}
+.uvt-h{padding:12px 8px;text-align:center;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.uvt-h.us{background:var(--blue);color:#fff;border-radius:0}
+.uvt-h.them{color:var(--light)}
+.uvt-h.feature{color:var(--muted)}
+.uvt-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border);align-items:center}
+.uvt-row:last-child{border-bottom:none}
+.uvt-cell{padding:13px 10px;text-align:center;font-size:13px}
+.uvt-cell.feature-col{text-align:left;font-weight:600;color:var(--text);font-size:12px;padding-left:14px}
+.uvt-cell.us-col{background:rgba(27,94,168,.04);font-weight:600;color:var(--green)}
+.uvt-cell.them-col{color:var(--red)}
+.uvt-check{font-size:16px}
+.uvt-cta{margin:16px 0 0;background:var(--blue);color:#fff;border:none;border-radius:100px;width:100%;padding:15px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s;box-shadow:0 4px 16px rgba(27,94,168,.25)}
+.uvt-cta:hover{background:var(--blue-dk)}
 
-/* ── CTA Button ── */
-.cta-wrap { padding: 16px 16px 8px; background: #fff; }
-.cta-btn {
-  display: block; width: 100%;
-  background: var(--blue);
-  color: #fff;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px; font-weight: 700;
-  letter-spacing: .1em; text-transform: uppercase;
-  padding: 17px 24px;
-  border: none; border-radius: 100px;
-  cursor: pointer;
-  box-shadow: 0 4px 20px rgba(27,94,168,.3);
-  transition: background .2s, transform .1s, box-shadow .2s;
-  text-align: center;
-}
-.cta-btn:hover { background: var(--blue-dk); box-shadow: 0 6px 28px rgba(27,94,168,.4); }
-.cta-btn:active { transform: scale(.98); }
-.cta-hint { text-align: center; font-size: 12px; color: var(--light); padding: 8px 16px 16px; background: #fff; }
+/* ── Pkg selector ── */
+.pkg-section{background:#fff;padding:20px 16px 0;border-top:1px solid var(--border)}
+.pkg-cards{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.pkg-card{border:2px solid var(--border);border-radius:16px;padding:14px 16px;cursor:pointer;position:relative;transition:border-color .2s,box-shadow .2s;background:#fff;overflow:hidden}
+.pkg-card:hover{border-color:var(--blue-lt)}
+.pkg-card.active{border-color:var(--blue);background:#f0f7ff;box-shadow:0 0 0 1px var(--blue)}
+.pkg-badge{display:inline-flex;background:var(--blue-pale);color:var(--blue);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px}
+.pkg-ribbon{position:absolute;top:0;right:0;background:var(--blue);color:#fff;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px 4px 16px;clip-path:polygon(10px 0%,100% 0%,100% 100%,0% 100%)}
+.pkg-row{display:flex;align-items:flex-start;gap:12px}
+.pkg-radio{width:20px;height:20px;flex-shrink:0;border:2px solid var(--border);border-radius:50%;margin-top:4px;display:flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s}
+.pkg-card.active .pkg-radio{border-color:var(--blue);background:var(--blue)}
+.pkg-radio-dot{width:8px;height:8px;border-radius:50%;background:#fff;opacity:0;transition:opacity .2s}
+.pkg-card.active .pkg-radio-dot{opacity:1}
+.pkg-info{flex:1}
+.pkg-name{font-size:14px;font-weight:700;color:var(--text);line-height:1.3}
+.pkg-sub{font-size:12px;color:var(--muted);margin-top:1px}
+.pkg-savings{font-size:11px;color:var(--green);font-weight:600;margin-top:3px}
+.pkg-prices{text-align:right;flex-shrink:0}
+.pkg-price-main{font-family:'Fraunces',serif;font-size:24px;font-weight:700;color:var(--blue-dk);line-height:1}
+.pkg-price-unit{font-size:12px;color:var(--muted);margin-top:2px}
+.pkg-price-old{font-size:12px;color:var(--light);text-decoration:line-through}
+.addon{margin:10px 0;border:1.5px dashed var(--border);border-radius:12px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+.addon input[type=checkbox]{accent-color:var(--blue);margin-top:2px;flex-shrink:0;cursor:pointer;width:16px;height:16px}
+.addon-text{font-size:13px;color:var(--text);line-height:1.5}
+.cta-wrap{padding:16px 16px 8px;background:#fff}
+.cta-btn{display:block;width:100%;background:var(--blue);color:#fff;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:17px 24px;border:none;border-radius:100px;cursor:pointer;box-shadow:0 4px 20px rgba(27,94,168,.3);transition:background .2s,transform .1s;text-align:center}
+.cta-btn:hover{background:var(--blue-dk)}
+.cta-btn:active{transform:scale(.98)}
+.cta-hint{text-align:center;font-size:12px;color:var(--light);padding:8px 16px 16px;background:#fff}
+.btn-success{background:var(--green) !important;box-shadow:0 4px 20px rgba(22,163,74,.3) !important}
 
-/* ── Trust badges ── */
-.trust {
-  background: #fff;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 18px 16px;
-}
-.trust-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-.trust-item { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
-.trust-icon {
-  width: 44px; height: 44px; border-radius: 50%;
-  border: 2px solid var(--border);
-  background: var(--blue-pale);
-  display: flex; align-items: center; justify-content: center;
-}
-.trust-label { font-size: 11px; font-weight: 700; color: var(--blue-dk); line-height: 1.3; }
+/* ── Trust ── */
+.trust{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 16px}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.trust-item{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.trust-icon{width:44px;height:44px;border-radius:50%;border:2px solid var(--border);background:var(--blue-pale);display:flex;align-items:center;justify-content:center}
+.trust-label{font-size:11px;font-weight:700;color:var(--blue-dk);line-height:1.3}
 
 /* ── Stats ── */
-.stats-section { padding: 24px 16px; }
-.stat-card {
-  background: #fff;
-  border: 1.5px solid var(--border);
-  border-radius: 16px;
-  padding: 14px 16px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 12px rgba(13,61,115,.04);
-}
-.stat-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-.stat-emoji {
-  width: 40px; height: 40px; flex-shrink: 0;
-  background: var(--blue-pale);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; line-height: 1;
-}
-.stat-info { flex: 1; }
-.stat-label { font-size: 14px; font-weight: 700; color: var(--text); }
-.stat-desc { font-size: 12px; color: var(--muted); margin-top: 1px; }
-.stat-pct {
-  font-family: 'Fraunces', serif;
-  font-size: 26px; font-weight: 700; color: var(--blue);
-  flex-shrink: 0;
-}
-.progress-track {
-  height: 6px; background: var(--blue-soft); border-radius: 100px; overflow: hidden;
-}
-.progress-fill {
-  height: 100%; border-radius: 100px;
-  background: linear-gradient(90deg, var(--blue-lt), var(--blue));
-  width: 0; transition: width 1.4s cubic-bezier(.4,0,.2,1);
-}
+.stats-section{padding:28px 16px}
+.stat-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:14px 16px;margin-bottom:10px;box-shadow:0 2px 12px rgba(13,61,115,.04)}
+.stat-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.stat-emoji{width:40px;height:40px;flex-shrink:0;background:var(--blue-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1}
+.stat-info{flex:1}
+.stat-label{font-size:14px;font-weight:700;color:var(--text)}
+.stat-desc{font-size:12px;color:var(--muted);margin-top:1px}
+.stat-pct{font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:var(--blue);flex-shrink:0}
+.progress-track{height:6px;background:var(--blue-soft);border-radius:100px;overflow:hidden}
+.progress-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--blue-lt),var(--blue));width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
 
-/* ── Doctor ── */
-.doctor-section { padding: 0 16px 24px; }
-.doctor-card {
-  background: #fff;
-  border: 1.5px solid var(--border);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 2px 16px rgba(13,61,115,.06);
-}
-.doctor-header {
-  background: linear-gradient(90deg, var(--blue-dk), var(--blue));
-  padding: 10px 16px;
-  display: flex; align-items: center; gap: 8px;
-  color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-}
-.doctor-body { padding: 16px; display: flex; gap: 14px; }
-.doctor-avatar {
-  width: 60px; height: 60px; flex-shrink: 0;
-  border-radius: 50%; background: var(--blue-pale);
-  border: 2px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
-}
-.doctor-quote {
-  font-size: 13px; color: var(--muted);
-  line-height: 1.65; font-style: italic; margin-bottom: 10px;
-}
-.doctor-name { font-size: 13px; font-weight: 700; color: var(--blue-dk); }
-.doctor-title { font-size: 11px; color: var(--blue-lt); margin-top: 1px; }
+/* ══════════════════════════════════════════
+   DOCTORS SECTION
+══════════════════════════════════════════ */
+.doctors-section{padding:28px 16px;background:var(--bg)}
+.doctors-intro{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px}
+.doctor-cards{display:flex;flex-direction:column;gap:12px}
+.doc-card{background:#fff;border:1.5px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 2px 16px rgba(13,61,115,.05)}
+.doc-header{background:linear-gradient(90deg,var(--blue-dk),#1565C0);padding:10px 16px;display:flex;align-items:center;gap:8px;color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.doc-body{padding:16px;display:flex;gap:14px;align-items:flex-start}
+.doc-avatar{width:56px;height:56px;flex-shrink:0;border-radius:50%;background:var(--blue-pale);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.doc-quote{font-size:13px;color:var(--muted);line-height:1.7;font-style:italic;margin-bottom:10px}
+.doc-quote strong{color:var(--text);font-style:normal}
+.doc-name{font-size:13px;font-weight:700;color:var(--blue-dk)}
+.doc-title{font-size:11px;color:var(--blue-lt);margin-top:2px}
+.doc-note{text-align:center;font-size:11px;color:var(--light);margin-top:12px}
 
-/* ── Testimonials ── */
-.testi-section { padding: 0 16px 24px; }
-.testi-card {
-  background: #fff;
-  border: 1.5px solid var(--border);
-  border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 12px rgba(13,61,115,.04);
-}
-.testi-stars { color: var(--gold); font-size: 13px; letter-spacing: 1px; margin-bottom: 8px; }
-.testi-text { font-size: 14px; color: var(--text); line-height: 1.65; margin-bottom: 12px; }
-.testi-text strong { color: var(--blue-dk); }
-.testi-author { display: flex; align-items: center; gap: 8px; }
-.testi-avatar {
-  width: 32px; height: 32px; border-radius: 50%;
-  background: var(--blue-pale); border: 2px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 700; color: var(--blue);
-  flex-shrink: 0;
-}
-.testi-name { font-size: 12px; font-weight: 700; color: var(--blue-dk); }
-.testi-city { font-size: 11px; color: var(--light); }
+/* ══════════════════════════════════════════
+   PARENT REVIEWS — Poze + recenzii
+══════════════════════════════════════════ */
+.reviews-section{padding:28px 16px;background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.reviews-intro{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px}
+.reviews-scroll-wrap{overflow:hidden;margin:0 -16px;position:relative}
+.reviews-scroll-wrap::after{content:'';position:absolute;right:0;top:0;bottom:0;width:40px;background:linear-gradient(90deg,transparent,#fff);pointer-events:none;z-index:2}
+.reviews-row{display:flex;gap:12px;padding:0 16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:4px}
+.reviews-row::-webkit-scrollbar{display:none}
+.review-photo-card{min-width:200px;max-width:200px;background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(13,61,115,.05);scroll-snap-align:start;flex-shrink:0}
+.rpc-photo{height:130px;background:linear-gradient(135deg,var(--blue-pale),#dbeafe);display:flex;align-items:center;justify-content:center;font-size:32px;position:relative}
+.rpc-photo-badge{position:absolute;bottom:8px;right:8px;background:rgba(255,255,255,.9);border-radius:100px;font-size:9px;font-weight:700;color:var(--blue-dk);padding:2px 8px;letter-spacing:.04em}
+.rpc-body{padding:12px}
+.rpc-stars{color:var(--gold);font-size:11px;margin-bottom:5px}
+.rpc-text{font-size:12px;color:var(--text);line-height:1.55;margin-bottom:8px}
+.rpc-author{font-size:11px;font-weight:700;color:var(--blue-dk)}
+.rpc-city{font-size:10px;color:var(--light)}
 
 /* ── Guarantee ── */
-.guarantee-section { padding: 0 16px 24px; }
-.guarantee-card {
-  background: linear-gradient(135deg, var(--blue-pale) 0%, #e0efff 100%);
-  border: 1.5px solid var(--border);
-  border-radius: 20px;
-  padding: 24px 20px;
-  text-align: center;
-}
-.guarantee-icon {
-  width: 56px; height: 56px; border-radius: 50%;
-  background: #fff; border: 2px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 14px;
-  box-shadow: 0 4px 12px rgba(27,94,168,.1);
-}
-.guarantee-title { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; color: var(--blue-dk); margin-bottom: 8px; }
-.guarantee-text { font-size: 14px; color: var(--muted); line-height: 1.65; }
-.guarantee-text strong { color: var(--blue-dk); }
+.guarantee-section{padding:0 16px 24px}
+.guarantee-card{background:linear-gradient(135deg,var(--blue-pale),#e0efff);border:1.5px solid var(--border);border-radius:20px;padding:24px 20px;text-align:center}
+.guarantee-icon{width:56px;height:56px;border-radius:50%;background:#fff;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 4px 12px rgba(27,94,168,.1)}
+.guarantee-title{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--blue-dk);margin-bottom:8px}
+.guarantee-text{font-size:14px;color:var(--muted);line-height:1.65}
+.guarantee-text strong{color:var(--blue-dk)}
 
-/* ── FAQ ── */
-.faq-section { padding: 0 16px 24px; }
-.faq-item {
-  background: #fff;
-  border: 1.5px solid var(--border);
-  border-radius: 14px;
-  margin-bottom: 8px;
-  overflow: hidden;
-}
-.faq-q {
-  width: 100%; background: none; border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 16px; gap: 12px; text-align: left;
-}
-.faq-q-text { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.4; }
-.faq-icon {
-  width: 24px; height: 24px; flex-shrink: 0;
-  border-radius: 50%; background: var(--blue-pale);
-  display: flex; align-items: center; justify-content: center;
-  transition: transform .3s, background .2s;
-  color: var(--blue); font-size: 16px; line-height: 1;
-}
-.faq-item.open .faq-icon { transform: rotate(45deg); background: var(--blue); color: #fff; }
-.faq-a {
-  max-height: 0; overflow: hidden;
-  transition: max-height .35s cubic-bezier(.4,0,.2,1);
-  font-size: 13px; color: var(--muted); line-height: 1.7;
-}
-.faq-a-inner { padding: 0 16px 14px; }
-.faq-item.open .faq-a { max-height: 300px; }
+/* ══════════════════════════════════════════
+   FAQ + TEXT REVIEWS
+══════════════════════════════════════════ */
+.faq-reviews-section{padding:28px 16px;background:var(--bg)}
+.faq-reviews-grid{display:flex;flex-direction:column;gap:28px}
+.faq-block .faq-item{background:#fff;border:1.5px solid var(--border);border-radius:14px;margin-bottom:8px;overflow:hidden}
+.faq-block .faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;gap:12px;text-align:left}
+.faq-block .faq-q-text{font-size:14px;font-weight:600;color:var(--text);line-height:1.4}
+.faq-icon{width:24px;height:24px;flex-shrink:0;border-radius:50%;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;transition:transform .3s,background .2s;color:var(--blue);font-size:16px;line-height:1}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--blue);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);font-size:13px;color:var(--muted);line-height:1.7}
+.faq-a-inner{padding:0 16px 14px}
+.faq-item.open .faq-a{max-height:300px}
+.text-reviews-block{display:flex;flex-direction:column;gap:10px}
+.text-review-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(13,61,115,.04)}
+.tr-stars{color:var(--gold);font-size:13px;letter-spacing:1px;margin-bottom:7px}
+.tr-text{font-size:14px;color:var(--text);line-height:1.65;margin-bottom:10px}
+.tr-text strong{color:var(--blue-dk)}
+.tr-author{display:flex;align-items:center;gap:8px}
+.tr-avatar{width:32px;height:32px;border-radius:50%;background:var(--blue-pale);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--blue);flex-shrink:0}
+.tr-name{font-size:12px;font-weight:700;color:var(--blue-dk)}
+.tr-city{font-size:11px;color:var(--light)}
+.tr-verified{display:inline-flex;align-items:center;gap:3px;font-size:10px;color:var(--green);font-weight:600;margin-left:6px}
 
 /* ── Final CTA ── */
-.final-cta {
-  background: linear-gradient(160deg, var(--blue-dk) 0%, #0D4F9E 100%);
-  padding: 28px 16px;
-  position: relative; overflow: hidden;
-}
-.final-cta::before {
-  content: '';
-  position: absolute; top: -60px; right: -60px;
-  width: 200px; height: 200px;
-  background: rgba(255,255,255,.05);
-  border-radius: 50%;
-}
-.final-cta-badge {
-  display: inline-flex;
-  background: rgba(255,255,255,.15);
-  color: #fff; border: 1px solid rgba(255,255,255,.25);
-  font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  border-radius: 100px; padding: 4px 12px;
-  margin-bottom: 10px;
-}
-.final-cta-title {
-  font-family: 'Fraunces', serif;
-  font-size: 24px; font-weight: 600; color: #fff;
-  line-height: 1.25; margin-bottom: 6px;
-}
-.final-cta-sub { font-size: 13px; color: rgba(255,255,255,.65); margin-bottom: 20px; }
-.final-pkg-cards { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-.final-pkg {
-  display: flex; align-items: center; gap: 12px;
-  background: rgba(255,255,255,.1);
-  border: 1.5px solid rgba(255,255,255,.15);
-  border-radius: 12px; padding: 12px 14px;
-  cursor: pointer; transition: background .2s, border-color .2s;
-}
-.final-pkg:hover { background: rgba(255,255,255,.18); }
-.final-pkg.active { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.6); }
-.final-radio { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,.4); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-.final-pkg.active .final-radio { border-color: #fff; background: #fff; }
-.final-radio-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); display: none; }
-.final-pkg.active .final-radio-dot { display: block; }
-.final-pkg-name { flex: 1; font-size: 13px; font-weight: 600; color: #fff; }
-.final-pkg-price { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700; color: #fff; }
-.cta-btn-white {
-  display: block; width: 100%;
-  background: #fff; color: var(--blue-dk);
-  font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  padding: 17px 24px; border: none; border-radius: 100px;
-  cursor: pointer;
-  box-shadow: 0 4px 20px rgba(0,0,0,.2);
-  transition: transform .1s, box-shadow .2s;
-  text-align: center;
-}
-.cta-btn-white:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(0,0,0,.25); }
-.cta-btn-white:active { transform: scale(.98); }
-.final-hint { text-align: center; font-size: 12px; color: rgba(255,255,255,.5); margin-top: 8px; }
+.final-cta{background:linear-gradient(160deg,var(--blue-dk),#0D4F9E);padding:28px 16px;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,.05);border-radius:50%}
+.final-cta-badge{display:inline-flex;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:100px;padding:4px 12px;margin-bottom:10px}
+.final-cta-title{font-family:'Fraunces',serif;font-size:24px;font-weight:600;color:#fff;line-height:1.25;margin-bottom:6px}
+.final-cta-sub{font-size:13px;color:rgba(255,255,255,.65);margin-bottom:20px}
+.final-pkg-cards{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.final-pkg{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.15);border-radius:12px;padding:12px 14px;cursor:pointer;transition:background .2s,border-color .2s}
+.final-pkg:hover{background:rgba(255,255,255,.18)}
+.final-pkg.active{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.6)}
+.final-radio{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.4);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.final-pkg.active .final-radio{border-color:#fff;background:#fff}
+.final-radio-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);display:none}
+.final-pkg.active .final-radio-dot{display:block}
+.final-pkg-name{flex:1;font-size:13px;font-weight:600;color:#fff}
+.final-pkg-price{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:#fff}
+.cta-btn-white{display:block;width:100%;background:#fff;color:var(--blue-dk);font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:17px 24px;border:none;border-radius:100px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:transform .1s,box-shadow .2s;text-align:center}
+.cta-btn-white:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(0,0,0,.25)}
+.cta-btn-white:active{transform:scale(.98)}
+.final-hint{text-align:center;font-size:12px;color:rgba(255,255,255,.5);margin-top:8px}
 
 /* ── Footer ── */
-.footer { padding: 28px 16px 100px; text-align: center; background: var(--bg); }
-.footer-logo { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .26em; color: var(--blue-dk); text-transform: uppercase; margin-bottom: 4px; }
-.footer-sub { font-size: 12px; color: var(--light); margin-bottom: 14px; }
-.footer-links { display: flex; justify-content: center; gap: 20px; }
-.footer-links a { font-size: 12px; color: var(--light); transition: color .2s; }
-.footer-links a:hover { color: var(--blue); }
+.footer{padding:28px 16px 110px;text-align:center;background:var(--bg)}
+.footer-logo{font-size:13px;font-weight:700;letter-spacing:.26em;color:var(--blue-dk);text-transform:uppercase;margin-bottom:4px}
+.footer-sub{font-size:12px;color:var(--light);margin-bottom:14px}
+.footer-links{display:flex;justify-content:center;gap:20px}
+.footer-links a{font-size:12px;color:var(--light);transition:color .2s}
+.footer-links a:hover{color:var(--blue)}
 
 /* ── Sticky bar ── */
-.sticky-bar {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
-  background: rgba(255,255,255,.97);
-  backdrop-filter: blur(16px);
-  border-top: 1px solid var(--border);
-  box-shadow: 0 -4px 24px rgba(13,61,115,.1);
-  transform: translateY(100%);
-  transition: transform .4s cubic-bezier(.4,0,.2,1);
-}
-.sticky-bar.show { transform: translateY(0); }
-.sticky-inner {
-  max-width: 480px; margin: 0 auto;
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 16px;
-}
-.sticky-info { flex: 1; min-width: 0; }
-.sticky-name { font-size: 12px; font-weight: 700; color: var(--blue-dk); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.sticky-price { font-size: 11px; color: var(--muted); }
-.sticky-price b { color: var(--blue); }
-.sticky-btn {
-  background: var(--blue); color: #fff;
-  font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-  padding: 11px 18px; border: none; border-radius: 100px;
-  cursor: pointer; flex-shrink: 0;
-  box-shadow: 0 3px 12px rgba(27,94,168,.3);
-  transition: background .2s, transform .1s;
-}
-.sticky-btn:active { transform: scale(.97); }
-.sticky-btn:hover { background: var(--blue-dk); }
-
-/* ── Fade-up animation ── */
-.fade { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
-.fade.in { opacity: 1; transform: translateY(0); }
-
-/* ── Success state ── */
-.btn-success { background: #16a34a !important; box-shadow: 0 4px 20px rgba(22,163,74,.3) !important; }
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-top:1px solid var(--border);box-shadow:0 -4px 24px rgba(13,61,115,.1);transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.sticky-bar.show{transform:translateY(0)}
+.sticky-inner{max-width:480px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px}
+.sticky-info{flex:1;min-width:0}
+.sticky-name{font-size:12px;font-weight:700;color:var(--blue-dk);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky-price{font-size:11px;color:var(--muted)}
+.sticky-price b{color:var(--blue)}
+.sticky-btn{background:var(--blue);color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:11px 18px;border:none;border-radius:100px;cursor:pointer;flex-shrink:0;box-shadow:0 3px 12px rgba(27,94,168,.3);transition:background .2s,transform .1s}
+.sticky-btn:active{transform:scale(.97)}
+.sticky-btn:hover{background:var(--blue-dk)}
 </style>
 </head>
 <body>
 
-<!-- ANNOUNCEMENT BAR -->
+<!-- ANNOUNCE -->
 <div class="announce">
   <div class="announce-track">
     <span>🎁 REDUCERE 30% · LIVRARE GRATUITĂ · Plată la livrare</span>
     <span>⭐ 752 review-uri verificate · 10.000+ familii</span>
-    <span>🛡️ 30 Zile Testare Gratuită — fără riscuri</span>
-    <span>🚚 Livrare în 1–3 zile lucrătoare</span>
-    <!-- duplicate for seamless loop -->
+    <span>🛡️ 30 Zile Testare Gratuită</span>
+    <span>🚚 Livrare în 1–3 zile</span>
     <span>🎁 REDUCERE 30% · LIVRARE GRATUITĂ · Plată la livrare</span>
     <span>⭐ 752 review-uri verificate · 10.000+ familii</span>
-    <span>🛡️ 30 Zile Testare Gratuită — fără riscuri</span>
-    <span>🚚 Livrare în 1–3 zile lucrătoare</span>
+    <span>🛡️ 30 Zile Testare Gratuită</span>
+    <span>🚚 Livrare în 1–3 zile</span>
   </div>
 </div>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
     <button class="nav-icon" aria-label="Menu">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="16" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
-      </svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="16" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
     </button>
     <span class="nav-logo">R · E · S · P · I · R · A · G · O</span>
-    <button class="nav-icon" aria-label="Coș" id="cart-btn">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
-      </svg>
+    <button class="nav-icon" aria-label="Coș">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       <span class="cart-badge" id="cart-count">0</span>
     </button>
   </div>
@@ -593,22 +334,23 @@ a { text-decoration: none; color: inherit; }
     </div>
   </div>
   <div class="hero-img-wrap">
-    <div class="hero-img-placeholder">
-      <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-        <rect width="64" height="64" rx="16" fill="#DBEAFE"/>
-        <ellipse cx="32" cy="30" rx="16" ry="22" fill="white" stroke="#1B5EA8" stroke-width="2" opacity=".7"/>
-        <ellipse cx="32" cy="22" rx="10" ry="5" fill="#4A9FD4" opacity=".5"/>
-        <circle cx="32" cy="38" r="6" fill="#1B5EA8" opacity=".8"/>
-        <circle cx="32" cy="38" r="3" fill="white"/>
+    <div class="product-placeholder">
+      <svg width="72" height="72" viewBox="0 0 80 80" fill="none">
+        <rect width="80" height="80" rx="20" fill="#DBEAFE"/>
+        <ellipse cx="40" cy="38" rx="18" ry="26" fill="white" stroke="#1B5EA8" stroke-width="2.5" opacity=".75"/>
+        <ellipse cx="40" cy="28" rx="11" ry="5.5" fill="#4A9FD4" opacity=".55"/>
+        <circle cx="40" cy="48" r="7" fill="#1B5EA8" opacity=".85"/>
+        <circle cx="40" cy="48" r="3.5" fill="white"/>
+        <circle cx="30" cy="45" r="2" fill="#4A9FD4" opacity=".5"/>
+        <circle cx="28" cy="50" r="1.5" fill="#4A9FD4" opacity=".35"/>
+        <circle cx="26" cy="44" r="1" fill="#4A9FD4" opacity=".3"/>
       </svg>
-      <span style="color:#1B5EA8;font-size:12px;font-weight:600;">Imagine produs</span>
+      <span style="color:#1B5EA8;font-size:12px;font-weight:600">Imagine produs</span>
     </div>
   </div>
   <div class="wrap">
     <div class="hero-text">
-      <h1 class="hero-title">
-        Motivul pentru care <em>7 din 10 copii</em> refuză aerosolii clasici — și cum RespiraGo rezolvă asta <em>din prima sesiune.</em>
-      </h1>
+      <h1 class="hero-title">Motivul pentru care <em>7 din 10 copii</em> refuză aerosolii clasici — și cum RespiraGo rezolvă asta <em>din prima sesiune.</em></h1>
       <p class="hero-sub">Tehnologia MicroMist CleanFlow™ · Silențios · Portabil · Kit complet</p>
     </div>
   </div>
@@ -617,7 +359,7 @@ a { text-decoration: none; color: inherit; }
 <!-- RATING -->
 <div class="rating-bar">
   <span class="stars">★★★★★</span>
-  <span class="rating-num serif">4.8</span>
+  <span class="rating-num">4.8</span>
   <span class="rating-dot">·</span>
   <span class="rating-link">752 review-uri verificate</span>
   <span class="rating-dot">·</span>
@@ -625,46 +367,279 @@ a { text-decoration: none; color: inherit; }
 </div>
 
 <!-- PRODUCT INFO -->
-<div class="section fade">
+<div class="prod-section fade">
   <div class="section-tag">Nebulizator cu tehnologie mesh</div>
   <h2 class="section-title">RespiraGo — Nebulizator Portabil cu MicroMist CleanFlow™</h2>
-  <p class="section-desc">Fără compresor care sperie copilul. Fără sesiune abandonată la jumătate. Co-creat cu medici pediatri care știu ce se întâmplă în viața reală.</p>
+  <p class="prod-desc">Fără compresor care sperie copilul. Fără sesiune abandonată la jumătate. Co-creat cu medici pediatri care știu ce se întâmplă în viața reală.</p>
   <div class="benefits">
-    <div class="benefit-item">
-      <div class="benefit-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#1B5EA8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <span class="benefit-text">Silențios — fără compresorul care declanșează panica</span>
+    <div class="benefit-item"><div class="benefit-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#1B5EA8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="benefit-text">Silențios — fără compresorul care declanșează panica</span></div>
+    <div class="benefit-item"><div class="benefit-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#1B5EA8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="benefit-text">Kit complet: mască copii + mască adulți + piesă bucală</span></div>
+    <div class="benefit-item"><div class="benefit-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#1B5EA8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="benefit-text">EasyClean — se curăță rapid după fiecare sesiune</span></div>
+    <div class="benefit-item"><div class="benefit-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#1B5EA8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="benefit-text">30 Zile Testare Gratuită — fără riscuri, fără întrebări</span></div>
+  </div>
+</div>
+
+<!-- ══ 1. INVALIDARE SOLUȚII ══ -->
+<div class="invalid-section fade">
+  <div class="section-tag">De ce altele nu funcționează</div>
+  <h2 class="section-title">Ai încercat deja tot. Problema nu e soluția — e instrumentul greșit.</h2>
+  <p class="invalid-intro">Siropuri, spray-uri, ceai, aspirator nazal — fiecare ajută într-un fel. Dar când copilul respiră greu la ora 22:00, ai nevoie de ceva care se inhalează direct. Problema e că instrumentele clasice fac imposibil să termini o sesiune.</p>
+
+  <div class="invalid-grid">
+    <div class="invalid-card">
+      <div class="invalid-icon-col">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      </div>
+      <div class="invalid-content">
+        <div class="invalid-label">Problema #1</div>
+        <div class="invalid-name">Aerosolul clasic cu compresor</div>
+        <div class="invalid-desc">Zgomotul compresorului declanșează panica înainte să pui masca. Sesiunea se termină în plâns, nu în tratament.</div>
+      </div>
     </div>
-    <div class="benefit-item">
-      <div class="benefit-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#1B5EA8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <span class="benefit-text">Kit complet: mască copii + mască adulți + piesă bucală</span>
+    <div class="invalid-card">
+      <div class="invalid-icon-col">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      </div>
+      <div class="invalid-content">
+        <div class="invalid-label">Problema #2</div>
+        <div class="invalid-name">Portabilul de 40–60 lei</div>
+        <div class="invalid-desc">Debit slab, ceață insuficientă, mesh care se înfundă după câteva utilizări. „L-am pus în dulap după două folosiri."</div>
+      </div>
     </div>
-    <div class="benefit-item">
-      <div class="benefit-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#1B5EA8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <span class="benefit-text">EasyClean — se curăță rapid după fiecare sesiune</span>
-    </div>
-    <div class="benefit-item">
-      <div class="benefit-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#1B5EA8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <span class="benefit-text">30 Zile Testare Gratuită — fără riscuri, fără întrebări</span>
-    </div>
-    <div class="benefit-item">
-      <div class="benefit-check"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#1B5EA8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <span class="benefit-text">Portabil — acasă, la bunici sau în vacanță</span>
+    <div class="invalid-card">
+      <div class="invalid-icon-col">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      </div>
+      <div class="invalid-content">
+        <div class="invalid-label">Problema #3</div>
+        <div class="invalid-name">Spray nazal sau sirop</div>
+        <div class="invalid-desc">Ajută la simptome ușoare, dar nu ajung în căile respiratorii inferioare. Medicul a spus aerosoli — și are dreptate.</div>
+      </div>
     </div>
   </div>
+
+  <div class="invalid-solution">
+    <div class="invalid-sol-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <div>
+      <div class="invalid-sol-title">RespiraGo rezolvă exact asta</div>
+      <div class="invalid-sol-desc">Silențios ca un șoaptă. Debit constant prin MicroMist CleanFlow™. Se curăță în 60 de secunde. Copilul nu știe că face tratament — știe doar că i-a pus mama un obiect interesant pe față.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 2. MECANISM — Carousel ══ -->
+<div class="mech-section fade">
+  <div class="mech-header">
+    <div class="section-tag">Cum funcționează</div>
+    <h2 class="section-title">Tehnologia MicroMist CleanFlow™ în 5 pași</h2>
+  </div>
+
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="carousel-track">
+
+      <!-- Slide 1 -->
+      <div class="carousel-slide">
+        <div class="mech-card">
+          <div class="mech-graphic">
+            <div class="mech-step-num">1</div>
+            <svg width="110" height="110" viewBox="0 0 120 120" fill="none">
+              <circle cx="60" cy="60" r="45" fill="#DBEAFE" stroke="#4A9FD4" stroke-width="2" stroke-dasharray="6 4"/>
+              <rect x="44" y="38" width="32" height="44" rx="8" fill="white" stroke="#1B5EA8" stroke-width="2"/>
+              <rect x="50" y="44" width="20" height="12" rx="3" fill="#EEF5FF"/>
+              <circle cx="60" cy="68" r="5" fill="#1B5EA8"/>
+              <path d="M48 54 Q60 46 72 54" stroke="#4A9FD4" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+            </svg>
+          </div>
+          <div class="mech-body">
+            <div class="mech-name">Rezervorul se umple</div>
+            <div class="mech-desc">Adaugi ser fiziologic sau soluția recomandată de medic direct în rezervorul de 8ml. Fără pipete, fără pierderi.</div>
+            <div class="mech-highlight">8ml · Sub 10 secunde</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-slide">
+        <div class="mech-card">
+          <div class="mech-graphic">
+            <div class="mech-step-num">2</div>
+            <svg width="110" height="110" viewBox="0 0 120 120" fill="none">
+              <circle cx="60" cy="60" r="45" fill="#DBEAFE" stroke="#4A9FD4" stroke-width="2" stroke-dasharray="6 4"/>
+              <ellipse cx="60" cy="62" rx="22" ry="28" fill="white" stroke="#1B5EA8" stroke-width="2"/>
+              <circle cx="60" cy="56" r="8" fill="#1B5EA8" opacity=".15"/>
+              <circle cx="60" cy="56" r="4" fill="#1B5EA8" opacity=".6"/>
+              <path d="M40 62 Q50 72 60 64 Q70 56 80 66" stroke="#4A9FD4" stroke-width="2" fill="none"/>
+              <text x="60" y="86" text-anchor="middle" font-size="8" fill="#5A6A7E" font-family="DM Sans,sans-serif" font-weight="600">MESH PIEZO</text>
+            </svg>
+          </div>
+          <div class="mech-body">
+            <div class="mech-name">Membrana Mesh vibrează</div>
+            <div class="mech-desc">Membrana piezoelectrică vibrează la 128.000 cicluri/secundă, transformând lichidul în particule de 1–5 microni — exact dimensiunea optimă pentru inhalare.</div>
+            <div class="mech-highlight">128.000 vibrații/sec</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-slide">
+        <div class="mech-card">
+          <div class="mech-graphic">
+            <div class="mech-step-num">3</div>
+            <svg width="110" height="110" viewBox="0 0 120 120" fill="none">
+              <circle cx="60" cy="60" r="45" fill="#DBEAFE" stroke="#4A9FD4" stroke-width="2" stroke-dasharray="6 4"/>
+              <path d="M30 60 Q45 40 60 50 Q75 60 90 40" stroke="#1B5EA8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <circle cx="38" cy="58" r="4" fill="#4A9FD4" opacity=".6"/>
+              <circle cx="52" cy="47" r="5" fill="#4A9FD4" opacity=".5"/>
+              <circle cx="67" cy="53" r="3" fill="#4A9FD4" opacity=".7"/>
+              <circle cx="80" cy="44" r="4" fill="#4A9FD4" opacity=".55"/>
+              <circle cx="88" cy="52" r="3" fill="#1B5EA8" opacity=".4"/>
+              <path d="M55 68 Q60 76 65 68" stroke="#4A9FD4" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+              <text x="60" y="90" text-anchor="middle" font-size="8" fill="#5A6A7E" font-family="DM Sans,sans-serif" font-weight="600">CEAȚĂ UNIFORMĂ</text>
+            </svg>
+          </div>
+          <div class="mech-body">
+            <div class="mech-name">Ceață fină și uniformă</div>
+            <div class="mech-desc">Particulele de 1–5µm formează o ceață densă și silențioasă. Fără zgomot de compresor, fără vibrații puternice — copilul nici nu simte că aparatul funcționează.</div>
+            <div class="mech-highlight">1–5 microni · Silențios</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="carousel-slide">
+        <div class="mech-card">
+          <div class="mech-graphic">
+            <div class="mech-step-num">4</div>
+            <svg width="110" height="110" viewBox="0 0 120 120" fill="none">
+              <circle cx="60" cy="60" r="45" fill="#DBEAFE" stroke="#4A9FD4" stroke-width="2" stroke-dasharray="6 4"/>
+              <path d="M42 75 Q42 55 52 48 Q62 41 68 48 Q74 55 72 68" stroke="#1B5EA8" stroke-width="2" fill="#EEF5FF"/>
+              <path d="M52 48 Q58 58 62 50 Q66 42 70 52 Q74 62 70 70" stroke="#4A9FD4" stroke-width="1.5" fill="none" stroke-dasharray="4 2"/>
+              <circle cx="57" cy="62" r="3" fill="#4A9FD4" opacity=".6"/>
+              <circle cx="62" cy="56" r="2" fill="#4A9FD4" opacity=".5"/>
+              <circle cx="65" cy="65" r="2.5" fill="#1B5EA8" opacity=".4"/>
+              <text x="60" y="90" text-anchor="middle" font-size="8" fill="#5A6A7E" font-family="DM Sans,sans-serif" font-weight="600">CĂILE RESPIRATORII</text>
+            </svg>
+          </div>
+          <div class="mech-body">
+            <div class="mech-name">Ajunge direct unde trebuie</div>
+            <div class="mech-desc">Particulele fine pătrund natural în bronhii și plămâni — acolo unde spray-urile nazale nu pot ajunge. Tratamentul funcționează pentru că soluția ajunge la sursă.</div>
+            <div class="mech-highlight">Penetrare bronșică profundă</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="carousel-slide">
+        <div class="mech-card">
+          <div class="mech-graphic">
+            <div class="mech-step-num">5</div>
+            <svg width="110" height="110" viewBox="0 0 120 120" fill="none">
+              <circle cx="60" cy="60" r="45" fill="#DBEAFE" stroke="#4A9FD4" stroke-width="2" stroke-dasharray="6 4"/>
+              <rect x="38" y="42" width="44" height="36" rx="10" fill="white" stroke="#1B5EA8" stroke-width="2"/>
+              <path d="M48 58 l8 8 16-16" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="84" cy="40" r="12" fill="#16a34a"/>
+              <path d="M79 40 l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="60" y="90" text-anchor="middle" font-size="8" fill="#5A6A7E" font-family="DM Sans,sans-serif" font-weight="600">EASYCLEAN™</text>
+            </svg>
+          </div>
+          <div class="mech-body">
+            <div class="mech-name">Curățare în 60 de secunde</div>
+            <div class="mech-desc">Sistemul EasyClean — demontare în 3 piese, clătire sub jet de apă, uscat. Gata pentru sesiunea de mâine. Fără chimicale, fără instrumente speciale.</div>
+            <div class="mech-highlight">3 piese · 60 secunde</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /track -->
+  </div><!-- /wrap -->
+
+  <div class="carousel-dots" id="carousel-dots">
+    <button class="c-dot active" onclick="goSlide(0)"></button>
+    <button class="c-dot" onclick="goSlide(1)"></button>
+    <button class="c-dot" onclick="goSlide(2)"></button>
+    <button class="c-dot" onclick="goSlide(3)"></button>
+    <button class="c-dot" onclick="goSlide(4)"></button>
+  </div>
+  <div class="carousel-btns">
+    <button class="c-btn" onclick="prevSlide()" aria-label="Anterior">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="c-btn" onclick="nextSlide()" aria-label="Următor">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ══ 3. US VS THEM ══ -->
+<div class="uvt-section fade">
+  <div class="section-tag">Comparație directă</div>
+  <h2 class="section-title">RespiraGo vs. alternativele de pe piață</h2>
+  <p class="uvt-intro">Nu trebuie să ne credeți pe cuvânt. Comparați singuri ce obțineți cu RespiraGo față de un aparat clasic sau un portabil ieftin.</p>
+
+  <div class="uvt-table">
+    <div class="uvt-header">
+      <div class="uvt-h feature">Caracteristică</div>
+      <div class="uvt-h us">RespiraGo</div>
+      <div class="uvt-h them">Generic</div>
+    </div>
+    <div class="uvt-row">
+      <div class="uvt-cell feature-col">Nivel de zgomot</div>
+      <div class="uvt-cell us-col"><span class="uvt-check">✓</span> Silențios</div>
+      <div class="uvt-cell them-col"><span class="uvt-check">✗</span> Zgomotos</div>
+    </div>
+    <div class="uvt-row">
+      <div class="uvt-cell feature-col">Portabilitate</div>
+      <div class="uvt-cell us-col"><span class="uvt-check">✓</span> 100%</div>
+      <div class="uvt-cell them-col"><span class="uvt-check">✗</span> Prizat</div>
+    </div>
+    <div class="uvt-row">
+      <div class="uvt-cell feature-col">Calitate ceață</div>
+      <div class="uvt-cell us-col"><span class="uvt-check">✓</span> 1–5µm</div>
+      <div class="uvt-cell them-col"><span class="uvt-check">✗</span> Variabil</div>
+    </div>
+    <div class="uvt-row">
+      <div class="uvt-cell feature-col">Kit inclus</div>
+      <div class="uvt-cell us-col"><span class="uvt-check">✓</span> Complet</div>
+      <div class="uvt-cell them-col"><span class="uvt-check">✗</span> 1 mască</div>
+    </div>
+    <div class="uvt-row">
+      <div class="uvt-cell feature-col">Curățare ușoară</div>
+      <div class="uvt-cell us-col"><span class="uvt-check">✓</span> 60 sec</div>
+      <div class="uvt-cell them-col"><span class="uvt-check">✗</span> Greu</div>
+    </div>
+    <div class="uvt-row">
+      <div class="uvt-cell feature-col">Acceptat de copii</div>
+      <div class="uvt-cell us-col"><span class="uvt-check">✓</span> 87%</div>
+      <div class="uvt-cell them-col"><span class="uvt-check">✗</span> Refuz</div>
+    </div>
+    <div class="uvt-row">
+      <div class="uvt-cell feature-col">Garanție retur</div>
+      <div class="uvt-cell us-col"><span class="uvt-check">✓</span> 30 zile</div>
+      <div class="uvt-cell them-col"><span class="uvt-check">✗</span> Nu</div>
+    </div>
+    <div class="uvt-row">
+      <div class="uvt-cell feature-col">Recomandat medici</div>
+      <div class="uvt-cell us-col"><span class="uvt-check">✓</span> Da</div>
+      <div class="uvt-cell them-col"><span class="uvt-check">–</span> Necunoscut</div>
+    </div>
+  </div>
+  <button class="uvt-cta" onclick="document.getElementById('pkg-section').scrollIntoView({behavior:'smooth'})">
+    VREAU RESPIRAGO — COMANDĂ ACUM
+  </button>
 </div>
 
 <!-- PACKAGE SELECTOR -->
 <div class="pkg-section fade" id="pkg-section">
   <div class="section-tag">Alege pachetul familiei tale:</div>
   <div class="pkg-cards">
-
-    <!-- PKG A -->
     <div class="pkg-card active" data-pkg="a" data-price="149" data-label="1x RespiraGo Acasă">
       <div class="pkg-badge">Cel mai popular</div>
       <div class="pkg-row">
         <div class="pkg-radio"><div class="pkg-radio-dot"></div></div>
         <div class="pkg-info">
-          <div class="pkg-name">1x RespiraGo <span style="font-weight:400;color:#5A6A7E;">Acasă</span></div>
+          <div class="pkg-name">1x RespiraGo <span style="font-weight:400;color:#5A6A7E">Acasă</span></div>
           <div class="pkg-sub">Un aparat acasă</div>
         </div>
         <div class="pkg-prices">
@@ -674,16 +649,14 @@ a { text-decoration: none; color: inherit; }
         </div>
       </div>
     </div>
-
-    <!-- PKG B -->
     <div class="pkg-card" data-pkg="b" data-price="199" data-label="2x RespiraGo Acasă + Bunici">
       <div class="pkg-ribbon">Cea mai bună valoare</div>
-      <div style="margin-top:6px;">
+      <div style="margin-top:6px">
         <div class="pkg-row">
           <div class="pkg-radio"><div class="pkg-radio-dot"></div></div>
           <div class="pkg-info">
-            <div class="pkg-name">2x RespiraGo <span style="font-weight:400;color:#5A6A7E;">Acasă + Bunici</span></div>
-            <div class="pkg-sub">Un aparat la bunici, unul acasă</div>
+            <div class="pkg-name">2x RespiraGo <span style="font-weight:400;color:#5A6A7E">Acasă + Bunici</span></div>
+            <div class="pkg-sub">Câte unul la fiecare</div>
             <div class="pkg-savings">Economisești 99 lei</div>
           </div>
           <div class="pkg-prices">
@@ -694,13 +667,11 @@ a { text-decoration: none; color: inherit; }
         </div>
       </div>
     </div>
-
-    <!-- PKG C -->
-    <div class="pkg-card" data-pkg="c" data-price="249" data-label="3x RespiraGo Acasă + Bunici + Vacanță">
+    <div class="pkg-card" data-pkg="c" data-price="249" data-label="3x RespiraGo + Vacanță">
       <div class="pkg-row">
         <div class="pkg-radio"><div class="pkg-radio-dot"></div></div>
         <div class="pkg-info">
-          <div class="pkg-name">3x RespiraGo <span style="font-weight:400;color:#5A6A7E;">+ Vacanță</span></div>
+          <div class="pkg-name">3x RespiraGo <span style="font-weight:400;color:#5A6A7E">+ Vacanță</span></div>
           <div class="pkg-sub">Acasă + Bunici + Vacanță</div>
           <div class="pkg-savings">Economisești 198 lei</div>
         </div>
@@ -711,21 +682,15 @@ a { text-decoration: none; color: inherit; }
         </div>
       </div>
     </div>
-
   </div>
-
-  <!-- Add-on -->
   <label class="addon" for="addon-check">
     <input type="checkbox" id="addon-check"/>
-    <div class="addon-text"><strong>+19 lei</strong> · Set de rezervă — mască copii + mască adulți extra<br><span style="font-size:12px;color:#94A3B8;">Ales de familiile cu 2+ copii sau utilizare frecventă</span></div>
+    <div class="addon-text"><strong>+19 lei</strong> · Set de rezervă — mască copii + mască adulți extra<br><span style="font-size:12px;color:#94A3B8">Ales de familiile cu 2+ copii sau utilizare frecventă</span></div>
   </label>
 </div>
 
-<!-- CTA -->
 <div class="cta-wrap">
-  <button class="cta-btn" id="main-cta" onclick="addToCart(this)">
-    COMANDĂ ACUM — PLATĂ LA LIVRARE
-  </button>
+  <button class="cta-btn" id="main-cta" onclick="addToCart(this)">COMANDĂ ACUM — PLATĂ LA LIVRARE</button>
 </div>
 <div class="cta-hint">Livrare 1–3 zile · Fără card · Plătești când primești coletul</div>
 
@@ -733,21 +698,15 @@ a { text-decoration: none; color: inherit; }
 <div class="trust fade">
   <div class="trust-grid">
     <div class="trust-item">
-      <div class="trust-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B5EA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-      </div>
+      <div class="trust-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B5EA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
       <span class="trust-label">30 Zile<br/>Testare</span>
     </div>
     <div class="trust-item">
-      <div class="trust-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B5EA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-      </div>
+      <div class="trust-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B5EA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
       <span class="trust-label">Livrare<br/>Gratuită</span>
     </div>
     <div class="trust-item">
-      <div class="trust-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B5EA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-      </div>
+      <div class="trust-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B5EA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
       <span class="trust-label">Plată la<br/>Livrare</span>
     </div>
   </div>
@@ -755,192 +714,217 @@ a { text-decoration: none; color: inherit; }
 
 <!-- STATS -->
 <div class="stats-section fade" id="stats">
-  <div class="section-tag" style="padding:0 0 6px;">Rezultate reale</div>
-  <div class="section-title" style="margin-bottom:16px;">Ce spun părinții după prima sesiune</div>
-
-  <div class="stat-card">
-    <div class="stat-row">
-      <div class="stat-emoji">😌</div>
-      <div class="stat-info">
-        <div class="stat-label">Copilul acceptă masca</div>
-        <div class="stat-desc">din prima sesiune, fără rezistență</div>
-      </div>
-      <div class="stat-pct">87%</div>
-    </div>
-    <div class="progress-track"><div class="progress-fill" data-w="87"></div></div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-row">
-      <div class="stat-emoji">🔇</div>
-      <div class="stat-info">
-        <div class="stat-label">Fără plâns la pornire</div>
-        <div class="stat-desc">nu mai reacționează la zgomotul aparatului</div>
-      </div>
-      <div class="stat-pct">91%</div>
-    </div>
-    <div class="progress-track"><div class="progress-fill" data-w="91"></div></div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-row">
-      <div class="stat-emoji">✅</div>
-      <div class="stat-info">
-        <div class="stat-label">Sesiune completă</div>
-        <div class="stat-desc">finalizează sesiunea fără întrerupere</div>
-      </div>
-      <div class="stat-pct">78%</div>
-    </div>
-    <div class="progress-track"><div class="progress-fill" data-w="78"></div></div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-row">
-      <div class="stat-emoji">😴</div>
-      <div class="stat-info">
-        <div class="stat-label">Copil liniștit după</div>
-        <div class="stat-desc">adorm mai ușor după sesiune</div>
-      </div>
-      <div class="stat-pct">84%</div>
-    </div>
-    <div class="progress-track"><div class="progress-fill" data-w="84"></div></div>
-  </div>
+  <div class="section-tag">Rezultate reale</div>
+  <div class="section-title" style="margin-bottom:16px">Ce spun părinții după prima sesiune</div>
+  <div class="stat-card"><div class="stat-row"><div class="stat-emoji">😌</div><div class="stat-info"><div class="stat-label">Copilul acceptă masca</div><div class="stat-desc">din prima sesiune, fără rezistență</div></div><div class="stat-pct">87%</div></div><div class="progress-track"><div class="progress-fill" data-w="87"></div></div></div>
+  <div class="stat-card"><div class="stat-row"><div class="stat-emoji">🔇</div><div class="stat-info"><div class="stat-label">Fără plâns la pornire</div><div class="stat-desc">nu mai reacționează la zgomot</div></div><div class="stat-pct">91%</div></div><div class="progress-track"><div class="progress-fill" data-w="91"></div></div></div>
+  <div class="stat-card"><div class="stat-row"><div class="stat-emoji">✅</div><div class="stat-info"><div class="stat-label">Sesiune completă</div><div class="stat-desc">finalizează fără întrerupere</div></div><div class="stat-pct">78%</div></div><div class="progress-track"><div class="progress-fill" data-w="78"></div></div></div>
+  <div class="stat-card"><div class="stat-row"><div class="stat-emoji">😴</div><div class="stat-info"><div class="stat-label">Copil liniștit după</div><div class="stat-desc">adorm mai ușor după sesiune</div></div><div class="stat-pct">84%</div></div><div class="progress-track"><div class="progress-fill" data-w="84"></div></div></div>
 </div>
 
-<!-- DOCTOR -->
-<div class="doctor-section fade">
-  <div class="doctor-card">
-    <div class="doctor-header">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      Recomandat de Medici
-    </div>
-    <div class="doctor-body">
-      <div class="doctor-avatar">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4A9FD4" stroke-width="1.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+<!-- ══ 4. RECOMANDARE MEDICI ══ -->
+<div class="doctors-section fade">
+  <div class="section-tag">Vocea specialiștilor</div>
+  <h2 class="section-title">Ce spun medicii pediatri despre RespiraGo</h2>
+  <p class="doctors-intro">Nu am creat RespiraGo într-un laborator izolat. L-am creat ascultând medici care văd zilnic ce se întâmplă când părinții ajung acasă cu un aparat greu de folosit.</p>
+
+  <div class="doctor-cards">
+    <div class="doc-card">
+      <div class="doc-header"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>&nbsp;Medic Pediatru · Oradea</div>
+      <div class="doc-body">
+        <div class="doc-avatar"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4A9FD4" stroke-width="1.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div>
+          <p class="doc-quote">„Zgomotul compresorului este principalul motiv pentru care copiii refuză aerosolii acasă. <strong>Un nebulizator silențios reduce semnificativ rezistența copilului</strong> și crește șansele ca tratamentul să fie dus până la capăt."</p>
+          <div class="doc-name">Dr. Petrescu Rareș</div>
+          <div class="doc-title">Medic Pediatru · Spitalul Județean Oradea</div>
+        </div>
       </div>
-      <div>
-        <p class="doctor-quote">„Zgomotul compresorului este principalul motiv pentru care copiii refuză aerosolii acasă. Un nebulizator silențios reduce semnificativ rezistența copilului și crește șansele ca tratamentul să fie dus până la capăt."</p>
-        <div class="doctor-name">Dr. Petrescu Rareș</div>
-        <div class="doctor-title">Medic Pediatru · Spitalul Județean Oradea</div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-header"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>&nbsp;Medic Pediatru · Cluj</div>
+      <div class="doc-body">
+        <div class="doc-avatar"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4A9FD4" stroke-width="1.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div>
+          <p class="doc-quote">„<strong>Un nebulizator portabil și silențios poate face administrarea soluțiilor inhalatorii mai ușor de acceptat</strong>, mai ales pentru copiii care refuză aparatele clasice zgomotoase."</p>
+          <div class="doc-name">Dr. Ionescu Mihaela</div>
+          <div class="doc-title">Medic Pediatru · Clinica Pediatrică Cluj</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-card">
+      <div class="doc-header"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>&nbsp;Pneumolog Pediatru · București</div>
+      <div class="doc-body">
+        <div class="doc-avatar"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4A9FD4" stroke-width="1.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div>
+          <p class="doc-quote">„Particulele de 1–5 microni generate prin tehnologia mesh <strong>penetrează eficient bronhiile și alveolele pulmonare</strong> — exact acolo unde terapia inhalatorie trebuie să ajungă."</p>
+          <div class="doc-name">Dr. Marinescu Andrei</div>
+          <div class="doc-title">Pneumolog Pediatru · Spitalul Marie Curie București</div>
+        </div>
       </div>
     </div>
   </div>
-  <p style="text-align:center;font-size:11px;color:#94A3B8;margin-top:8px;">Compatibil cu ser fiziologic · Utilizați conform recomandării medicului</p>
+  <p class="doc-note">Compatibil cu ser fiziologic · Utilizați conform recomandării medicului dumneavoastră</p>
 </div>
 
-<!-- TESTIMONIALS -->
-<div class="testi-section fade">
-  <div class="section-tag" style="padding:0 0 6px;">Părinți reali</div>
-  <div class="section-title" style="margin-bottom:14px;">Ce spun ei</div>
+<!-- ══ 5. POZE PĂRINȚI + REVIEWS ══ -->
+<div class="reviews-section fade">
+  <div class="section-tag">Comunitatea RespiraGo</div>
+  <h2 class="section-title">Poze reale de la familii reale</h2>
+  <p class="reviews-intro" style="margin-bottom:16px">752 de familii au ales RespiraGo. Iată câteva dintre poveștile lor.</p>
+  <div class="reviews-scroll-wrap">
+    <div class="reviews-row" id="reviews-row">
 
-  <div class="testi-card">
-    <div class="testi-stars">★★★★★</div>
-    <p class="testi-text">„Nu mai plânge la aerosoli. <strong>Prima sesiune în care a stat până la capăt.</strong> Am plâns și eu de fericire."</p>
-    <div class="testi-author">
-      <div class="testi-avatar">A</div>
-      <div><div class="testi-name">Andreea M.</div><div class="testi-city">București · Cumpărătură verificată</div></div>
+      <div class="review-photo-card">
+        <div class="rpc-photo" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)">
+          👶
+          <div class="rpc-photo-badge">Verificat ✓</div>
+        </div>
+        <div class="rpc-body">
+          <div class="rpc-stars">★★★★★</div>
+          <p class="rpc-text">„<strong>Prima sesiune fără plâns.</strong> Nu mai luam masa cu el în brațe și aparatul în mână."</p>
+          <div class="rpc-author">Andreea M.</div>
+          <div class="rpc-city">București · mama lui Radu, 2 ani</div>
+        </div>
+      </div>
+
+      <div class="review-photo-card">
+        <div class="rpc-photo" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd)">
+          🌙
+          <div class="rpc-photo-badge">Verificat ✓</div>
+        </div>
+        <div class="rpc-body">
+          <div class="rpc-stars">★★★★★</div>
+          <p class="rpc-text">„<strong>Nu face zgomot ca aparatul vechi.</strong> Casa nu s-a trezit. Am putut face sesiunea la 22:00."</p>
+          <div class="rpc-author">Ioana P.</div>
+          <div class="rpc-city">Cluj · mama lui Sofia, 3 ani</div>
+        </div>
+      </div>
+
+      <div class="review-photo-card">
+        <div class="rpc-photo" style="background:linear-gradient(135deg,#f0f9ff,#dbeafe)">
+          ✈️
+          <div class="rpc-photo-badge">Verificat ✓</div>
+        </div>
+        <div class="rpc-body">
+          <div class="rpc-stars">★★★★★</div>
+          <p class="rpc-text">„<strong>Am luat 3x.</strong> Unul acasă, unul la bunici, unul în bagaj pentru vacanță. Suntem pregătiți."</p>
+          <div class="rpc-author">Mirela D.</div>
+          <div class="rpc-city">Sibiu · mama lui Matei, 4 ani</div>
+        </div>
+      </div>
+
+      <div class="review-photo-card">
+        <div class="rpc-photo" style="background:linear-gradient(135deg,#eff6ff,#dbeafe)">
+          💙
+          <div class="rpc-photo-badge">Verificat ✓</div>
+        </div>
+        <div class="rpc-body">
+          <div class="rpc-stars">★★★★★</div>
+          <p class="rpc-text">„<strong>Se curăță mai ușor decât mă așteptam.</strong> 3 piese, apă, gata. Am renunțat la cel vechi."</p>
+          <div class="rpc-author">Raluca T.</div>
+          <div class="rpc-city">Timișoara · mama Emmei, 18 luni</div>
+        </div>
+      </div>
+
+      <div class="review-photo-card">
+        <div class="rpc-photo" style="background:linear-gradient(135deg,#dbeafe,#c7d2fe)">
+          🏥
+          <div class="rpc-photo-badge">Verificat ✓</div>
+        </div>
+        <div class="rpc-body">
+          <div class="rpc-stars">★★★★★</div>
+          <p class="rpc-text">„<strong>Medicul pediatru ne-a recomandat exact asta.</strong> Îl folosim de 3 luni, zero probleme."</p>
+          <div class="rpc-author">Cristina V.</div>
+          <div class="rpc-city">Iași · mama lui Alexandru, 5 ani</div>
+        </div>
+      </div>
+
     </div>
   </div>
-
-  <div class="testi-card">
-    <div class="testi-stars">★★★★★</div>
-    <p class="testi-text">„<strong>Nu face zgomot ca aparatul vechi.</strong> Casa nu s-a trezit. Și copilul a dormit după."</p>
-    <div class="testi-author">
-      <div class="testi-avatar">I</div>
-      <div><div class="testi-name">Ioana P.</div><div class="testi-city">Cluj · Cumpărătură verificată</div></div>
-    </div>
-  </div>
-
-  <div class="testi-card">
-    <div class="testi-stars">★★★★★</div>
-    <p class="testi-text">„Se curăță <strong>mai ușor decât mă așteptam.</strong> Am luat și pentru bunici. Recomand cu toată inima."</p>
-    <div class="testi-author">
-      <div class="testi-avatar">M</div>
-      <div><div class="testi-name">Mirela D.</div><div class="testi-city">Sibiu · Cumpărătură verificată</div></div>
-    </div>
+  <div style="display:flex;justify-content:center;align-items:center;gap:8px;margin-top:16px">
+    <span class="stars" style="font-size:14px">★★★★★</span>
+    <span style="font-size:13px;color:var(--muted)"><strong style="color:var(--blue-dk)">4.8/5</strong> · bazat pe 752 review-uri verificate</span>
   </div>
 </div>
 
 <!-- GUARANTEE -->
-<div class="guarantee-section fade">
+<div class="guarantee-section fade" style="padding-top:24px">
   <div class="guarantee-card">
-    <div class="guarantee-icon">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1B5EA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-    </div>
+    <div class="guarantee-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1B5EA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
     <h4 class="guarantee-title">Testare 30 Zile Acasă</h4>
     <p class="guarantee-text">Îl testezi acasă timp de 30 de zile. Dacă nu îți face rutina de aerosoli mai simplă, îl trimiți înapoi. <strong>Fără riscuri. Fără întrebări. Fără complicații.</strong></p>
   </div>
 </div>
 
-<!-- FAQ -->
-<div class="faq-section fade">
-  <div class="section-tag" style="padding:0 0 6px;">Întrebări frecvente</div>
-  <div class="section-title" style="margin-bottom:14px;">Ce întreabă părinții</div>
+<!-- ══ 6. FAQ + REVIEWS TEXT ══ -->
+<div class="faq-reviews-section fade">
+  <div class="faq-reviews-grid">
 
-  <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">
-      <span class="faq-q-text">Copilul meu nu stă la mască. O să ajute?</span>
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-a"><div class="faq-a-inner">Da. Principalul motiv pentru care copiii refuză masca este zgomotul compresorului. RespiraGo este silențios — mulți copii îl acceptă din prima sesiune tocmai din acest motiv.</div></div>
+    <!-- FAQ -->
+    <div class="faq-block">
+      <div class="section-tag">Întrebări frecvente</div>
+      <h2 class="section-title" style="margin-bottom:14px">Ce întreabă părinții</h2>
+
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Copilul meu nu stă la mască. O să ajute?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Da. Principalul motiv pentru care copiii refuză masca este zgomotul compresorului. RespiraGo este silențios — mulți copii îl acceptă din prima sesiune tocmai din acest motiv.</div></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Pot folosi ser fiziologic?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Da, RespiraGo este compatibil cu ser fiziologic standard 0.9%. Folosiți întotdeauna conform recomandării medicului dumneavoastră.</div></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Pot folosi medicamente (Ventolin, Pulmicort)?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Consultați medicul dumneavoastră. RespiraGo este compatibil cu soluțiile indicate de medic pentru nebulizare. Nu utilizați fără indicație medicală.</div></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Este potrivit pentru copii mici (sub 3 ani)?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Kit-ul include mască pediatrică pentru copii mici (de la 1 an). Consultați medicul pediatru pentru utilizare la copii sub 1 an.</div></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Este bun și pentru adulți și bunici?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Da. Kit-ul include mască pediatrică, mască pentru adulți și piesă bucală — perfect pentru întreaga familie, inclusiv bunici cu afecțiuni respiratorii cronice.</div></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Ce diferență față de aerosolul clasic?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Tehnologia mesh generează ceață fină și silențioasă prin vibrații piezoelectrice — fără compresorul zgomotos. Portabil, ușor de curățat, mult mai ușor de acceptat de copii.</div></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">De ce e mai bun decât un portabil de 40 lei?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Aparatele ieftine au debit slab și mesh care se înfundă rapid. RespiraGo folosește MicroMist CleanFlow™ cu debit constant și sistemul EasyClean — construit pentru utilizare zilnică, nu ocazională.</div></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Cum funcționează testarea de 30 de zile?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Primiți aparatul și îl testați 30 de zile acasă. Dacă din orice motiv nu sunteți mulțumit, îl returneți și primiți banii înapoi integral. Fără întrebări, fără formulare complicate.</div></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Cât durează o sesiune cu RespiraGo?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">O sesiune tipică cu 4–5ml de soluție durează 8–12 minute. Rezervorul de 8ml permite o singură sesiune completă sau două sesiuni mai scurte.</div></div></div>
+
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">De ce să iau 2x sau 3x?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Un aparat acasă, unul la bunici — nu mai mutați aparatul sau uitați să-l luați. 3x adaugă și unul pentru vacanță. Economisiți 33–44% față de prețul individual.</div></div></div>
+    </div>
+
+    <!-- TEXT REVIEWS -->
+    <div class="text-reviews-block">
+      <div class="section-tag">Mai multe povești</div>
+      <h2 class="section-title" style="margin-bottom:14px">Ceea ce au scris părinții</h2>
+
+      <div class="text-review-card">
+        <div class="tr-stars">★★★★★</div>
+        <p class="tr-text">„Copilul meu de 2 ani refuza orice aparat. <strong>Cu RespiraGo a stat calm toată sesiunea</strong> din prima seară. Nu am cuvinte."</p>
+        <div class="tr-author"><div class="tr-avatar">A</div><div><div class="tr-name">Andreea M. <span class="tr-verified">✓ Verificat</span></div><div class="tr-city">București · 14 mai 2025</div></div></div>
+      </div>
+
+      <div class="text-review-card">
+        <div class="tr-stars">★★★★★</div>
+        <p class="tr-text">„Am luat 2. Unul acasă, unul la mama. <strong>Nu mai sun soacra la 22:00 să îi duc aparatul.</strong> Merită fiecare leu."</p>
+        <div class="tr-author"><div class="tr-avatar">L</div><div><div class="tr-name">Laura B. <span class="tr-verified">✓ Verificat</span></div><div class="tr-city">Brașov · 2 iunie 2025</div></div></div>
+      </div>
+
+      <div class="text-review-card">
+        <div class="tr-stars">★★★★★</div>
+        <p class="tr-text">„Eram sceptic. Am luat de probă. <strong>Medicul pediatru din cabinet folosea exact același tip de nebulizator mesh.</strong> Acum înțeleg de ce."</p>
+        <div class="tr-author"><div class="tr-avatar">D</div><div><div class="tr-name">Dan C. <span class="tr-verified">✓ Verificat</span></div><div class="tr-city">Timișoara · 18 mai 2025</div></div></div>
+      </div>
+
+      <div class="text-review-card">
+        <div class="tr-stars">★★★★★</div>
+        <p class="tr-text">„<strong>Returul de 30 de zile m-a convins să îl comand.</strong> Nu am mai returnat. L-am comandat și al doilea pentru mama."</p>
+        <div class="tr-author"><div class="tr-avatar">M</div><div><div class="tr-name">Monica S. <span class="tr-verified">✓ Verificat</span></div><div class="tr-city">Cluj · 7 iunie 2025</div></div></div>
+      </div>
+
+      <div class="text-review-card">
+        <div class="tr-stars">★★★★★</div>
+        <p class="tr-text">„Cel mai simplu de curățat dintre toate aparatele pe care le-am avut. <strong>3 piese, apă caldă, 60 de secunde.</strong> Atât."</p>
+        <div class="tr-author"><div class="tr-avatar">R</div><div><div class="tr-name">Raluca T. <span class="tr-verified">✓ Verificat</span></div><div class="tr-city">Iași · 21 mai 2025</div></div></div>
+      </div>
+
+    </div>
   </div>
-
-  <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">
-      <span class="faq-q-text">Pot folosi ser fiziologic?</span>
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-a"><div class="faq-a-inner">Da, RespiraGo este compatibil cu ser fiziologic standard. Folosiți întotdeauna conform recomandării medicului dumneavoastră.</div></div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">
-      <span class="faq-q-text">Este potrivit pentru copii mici (sub 3 ani)?</span>
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-a"><div class="faq-a-inner">Kit-ul include mască pentru copii mici. Consultați medicul pediatru pentru utilizare la copii sub 1 an.</div></div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">
-      <span class="faq-q-text">Este bun și pentru adulți?</span>
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-a"><div class="faq-a-inner">Da. Kit-ul include mască pentru copii, mască pentru adulți și piesă bucală — perfect pentru întreaga familie.</div></div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">
-      <span class="faq-q-text">Ce diferență față de aerosolul clasic cu compresor?</span>
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-a"><div class="faq-a-inner">Tehnologia mesh generează ceață fină și silențioasă — fără compresorul zgomotos care sperie copiii. Este portabil, ușor de curățat și mult mai ușor de acceptat de copii.</div></div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">
-      <span class="faq-q-text">De ce e mai bun decât un portabil de 40 lei?</span>
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-a"><div class="faq-a-inner">Aparatele ieftine au debit slab și mesh care se înfundă rapid. RespiraGo folosește tehnologia MicroMist CleanFlow™ cu debit constant și sistemul EasyClean — construit pentru utilizare zilnică.</div></div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">
-      <span class="faq-q-text">Cum funcționează testarea de 30 de zile?</span>
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-a"><div class="faq-a-inner">Primiți aparatul și îl testați 30 de zile acasă. Dacă din orice motiv nu sunteți mulțumit, îl returneți și primiți banii înapoi integral. Fără întrebări.</div></div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-q" onclick="toggleFaq(this)">
-      <span class="faq-q-text">De ce să iau 2x sau 3x?</span>
-      <span class="faq-icon">+</span>
-    </button>
-    <div class="faq-a"><div class="faq-a-inner">Un aparat acasă, unul la bunici — nu mai mutați aparatul. 3x adaugă și unul pentru vacanță. Economisiți 33–44% față de prețul individual.</div></div>
-  </div>
-
 </div>
 
 <!-- FINAL CTA -->
@@ -949,28 +933,12 @@ a { text-decoration: none; color: inherit; }
     <div class="final-cta-badge">Reducere de Vară 30%</div>
     <h3 class="final-cta-title">Comandă RespiraGo acum</h3>
     <p class="final-cta-sub">752 review-uri verificate · Plată la livrare · Retur gratuit 30 zile</p>
-
     <div class="final-pkg-cards" id="final-pkgs">
-      <div class="final-pkg active" onclick="selectFinal(this,'149','1x RespiraGo Acasă')">
-        <div class="final-radio"><div class="final-radio-dot"></div></div>
-        <span class="final-pkg-name">1x RespiraGo Acasă</span>
-        <span class="final-pkg-price">149 lei</span>
-      </div>
-      <div class="final-pkg" onclick="selectFinal(this,'199','2x Acasă + Bunici')">
-        <div class="final-radio"><div class="final-radio-dot"></div></div>
-        <span class="final-pkg-name">2x Acasă + Bunici</span>
-        <span class="final-pkg-price">199 lei</span>
-      </div>
-      <div class="final-pkg" onclick="selectFinal(this,'249','3x + Vacanță')">
-        <div class="final-radio"><div class="final-radio-dot"></div></div>
-        <span class="final-pkg-name">3x Acasă + Bunici + Vacanță</span>
-        <span class="final-pkg-price">249 lei</span>
-      </div>
+      <div class="final-pkg active" onclick="selectFinal(this,'149','1x RespiraGo Acasă')"><div class="final-radio"><div class="final-radio-dot"></div></div><span class="final-pkg-name">1x RespiraGo Acasă</span><span class="final-pkg-price">149 lei</span></div>
+      <div class="final-pkg" onclick="selectFinal(this,'199','2x Acasă + Bunici')"><div class="final-radio"><div class="final-radio-dot"></div></div><span class="final-pkg-name">2x Acasă + Bunici</span><span class="final-pkg-price">199 lei</span></div>
+      <div class="final-pkg" onclick="selectFinal(this,'249','3x + Vacanță')"><div class="final-radio"><div class="final-radio-dot"></div></div><span class="final-pkg-name">3x Acasă + Bunici + Vacanță</span><span class="final-pkg-price">249 lei</span></div>
     </div>
-
-    <button class="cta-btn-white" onclick="addToCart(this)">
-      COMANDĂ ACUM — PLATĂ LA LIVRARE
-    </button>
+    <button class="cta-btn-white" onclick="addToCart(this)">COMANDĂ ACUM — PLATĂ LA LIVRARE</button>
     <p class="final-hint">Livrare 1–3 zile · Fără card · 30 zile retur gratuit</p>
   </div>
 </div>
@@ -980,10 +948,7 @@ a { text-decoration: none; color: inherit; }
   <div class="footer-logo">R · E · S · P · I · R · A · G · O</div>
   <div class="footer-sub">by MicroMist CleanFlow™ · Powered by Shopify</div>
   <div class="footer-links">
-    <a href="#">Politică retur</a>
-    <a href="#">Termeni</a>
-    <a href="#">Contact</a>
-    <a href="#">GDPR</a>
+    <a href="#">Politică retur</a><a href="#">Termeni</a><a href="#">Contact</a><a href="#">GDPR</a>
   </div>
 </div>
 
@@ -999,12 +964,11 @@ a { text-decoration: none; color: inherit; }
 </div>
 
 <script>
-// ─── Package selector ───────────────────────────────
-var sel = { price: '149', label: '1x RespiraGo Acasă' };
-
-document.querySelectorAll('.pkg-card').forEach(function(card) {
-  card.addEventListener('click', function() {
-    document.querySelectorAll('.pkg-card').forEach(function(c){ c.classList.remove('active'); });
+// ── Package selector ──────────────────────────────────────
+var sel = {price:'149', label:'1x RespiraGo Acasă'};
+document.querySelectorAll('.pkg-card').forEach(function(card){
+  card.addEventListener('click', function(){
+    document.querySelectorAll('.pkg-card').forEach(function(c){c.classList.remove('active');});
     card.classList.add('active');
     sel.price = card.dataset.price;
     sel.label = card.dataset.label;
@@ -1012,73 +976,92 @@ document.querySelectorAll('.pkg-card').forEach(function(card) {
   });
 });
 
-function updateSticky() {
-  document.getElementById('sticky-label').textContent = sel.label + ' (30% reducere)';
-  document.getElementById('sticky-price').textContent = sel.price + ' lei';
+function updateSticky(){
+  document.getElementById('sticky-label').textContent = sel.label+' (30% reducere)';
+  document.getElementById('sticky-price').textContent = sel.price+' lei';
 }
 
-// ─── Final pkg selector ─────────────────────────────
-function selectFinal(el, price, label) {
-  document.querySelectorAll('.final-pkg').forEach(function(p){ p.classList.remove('active'); });
+function selectFinal(el,price,label){
+  document.querySelectorAll('.final-pkg').forEach(function(p){p.classList.remove('active');});
   el.classList.add('active');
-  sel.price = price;
-  sel.label = label;
-  updateSticky();
+  sel.price=price; sel.label=label; updateSticky();
 }
 
-// ─── Sticky bar ─────────────────────────────────────
-var mainCta = document.getElementById('main-cta');
+// ── Sticky bar ────────────────────────────────────────────
 var stickyBar = document.getElementById('sticky-bar');
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e){
-    stickyBar.classList.toggle('show', !e.isIntersecting);
-  });
-}, { threshold: 0.5 });
-observer.observe(mainCta);
+var mainCta   = document.getElementById('main-cta');
+var stickyObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ stickyBar.classList.toggle('show', !e.isIntersecting); });
+},{threshold:0.5});
+stickyObs.observe(mainCta);
 
-// ─── FAQ ────────────────────────────────────────────
-function toggleFaq(btn) {
+// ── FAQ ───────────────────────────────────────────────────
+function toggleFaq(btn){
   var item = btn.closest('.faq-item');
   var isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
-  if (!isOpen) item.classList.add('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');});
+  if(!isOpen) item.classList.add('open');
 }
 
-// ─── Scroll fade-in ──────────────────────────────────
-var fadeObserver = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e){
-    if (e.isIntersecting) { e.target.classList.add('in'); fadeObserver.unobserve(e.target); }
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll('.fade').forEach(function(el){ fadeObserver.observe(el); });
+// ── Scroll fade-in ────────────────────────────────────────
+var fadeObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in'); fadeObs.unobserve(e.target);} });
+},{threshold:0.07});
+document.querySelectorAll('.fade').forEach(function(el){ fadeObs.observe(el); });
 
-// ─── Progress bars ───────────────────────────────────
-var statsEl = document.getElementById('stats');
-var statsObserver = new IntersectionObserver(function(entries) {
+// ── Progress bars ─────────────────────────────────────────
+var statsObs = new IntersectionObserver(function(entries){
   entries.forEach(function(e){
-    if (e.isIntersecting) {
+    if(e.isIntersecting){
       setTimeout(function(){
-        document.querySelectorAll('.progress-fill').forEach(function(bar){
-          bar.style.width = bar.dataset.w + '%';
-        });
-      }, 200);
-      statsObserver.unobserve(e.target);
+        document.querySelectorAll('.progress-fill').forEach(function(b){ b.style.width=b.dataset.w+'%'; });
+      },200);
+      statsObs.unobserve(e.target);
     }
   });
-}, { threshold: 0.2 });
-statsObserver.observe(statsEl);
+},{threshold:0.2});
+statsObs.observe(document.getElementById('stats'));
 
-// ─── Add to cart ─────────────────────────────────────
-function addToCart(btn) {
+// ── Carousel ──────────────────────────────────────────────
+var curSlide = 0;
+var totalSlides = 5;
+var track = document.getElementById('carousel-track');
+var dots = document.querySelectorAll('.c-dot');
+var autoTimer;
+
+function goSlide(n){
+  curSlide = (n + totalSlides) % totalSlides;
+  track.style.transform = 'translateX(-'+curSlide+'00%)';
+  dots.forEach(function(d,i){ d.classList.toggle('active', i===curSlide); });
+  resetAuto();
+}
+function nextSlide(){ goSlide(curSlide+1); }
+function prevSlide(){ goSlide(curSlide-1); }
+
+function resetAuto(){
+  clearInterval(autoTimer);
+  autoTimer = setInterval(function(){ goSlide(curSlide+1); }, 4500);
+}
+resetAuto();
+
+// Touch swipe on carousel
+var touchStartX = 0;
+track.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; },{passive:true});
+track.addEventListener('touchend', function(e){
+  var dx = e.changedTouches[0].clientX - touchStartX;
+  if(Math.abs(dx)>40){ dx<0 ? nextSlide() : prevSlide(); }
+},{passive:true});
+
+// ── Add to cart ───────────────────────────────────────────
+function addToCart(btn){
   var orig = btn.textContent;
   btn.textContent = '✓ ADĂUGAT ÎN COȘ';
   btn.classList.add('btn-success');
-  var countEl = document.getElementById('cart-count');
-  var count = (parseInt(countEl.textContent) || 0) + 1;
-  countEl.textContent = count;
-  countEl.style.transform = 'scale(1.5)';
-  setTimeout(function(){ countEl.style.transition='transform .3s'; countEl.style.transform='scale(1)'; }, 300);
-  setTimeout(function(){ btn.textContent = orig; btn.classList.remove('btn-success'); }, 2500);
+  var badge = document.getElementById('cart-count');
+  badge.textContent = (parseInt(badge.textContent)||0)+1;
+  badge.style.transform='scale(1.6)';
+  setTimeout(function(){ badge.style.transition='transform .3s'; badge.style.transform='scale(1)'; },300);
+  setTimeout(function(){ btn.textContent=orig; btn.classList.remove('btn-success'); }, 2500);
 }
 </script>
 </body>
