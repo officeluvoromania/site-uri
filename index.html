@@ -134,16 +134,18 @@ button{font-family:inherit}
 .accordion-body-inner strong{color:var(--blue-dk)}
 
 /* ══ VIDEO section ══ */
-.video-section{background:var(--bg);border-bottom:1px solid var(--border);padding:22px 16px}
-.video-grid{display:flex;flex-direction:column;gap:12px;margin-top:14px}
-.video-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(13,61,115,.05)}
-.video-thumb{height:150px;background:linear-gradient(135deg,var(--blue-dk),#1565C0);display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer}
-.video-play{width:52px;height:52px;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s}
-.video-thumb:hover .video-play{background:rgba(255,255,255,.35)}
-.video-play svg{margin-left:4px}
-.video-card-body{padding:12px 14px}
-.video-card-name{font-size:13px;font-weight:700;color:var(--blue-dk);margin-bottom:2px}
-.video-card-title{font-size:11px;color:var(--muted)}
+.video-section{background:var(--bg);border-bottom:1px solid var(--border);padding:22px 0}
+.video-section-header{padding:0 16px 14px}
+.video-scroll{overflow-x:auto;overflow-y:hidden;display:flex;gap:10px;padding:0 16px;scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x mandatory}
+.video-scroll::-webkit-scrollbar{display:none}
+.video-card{flex-shrink:0;width:140px;scroll-snap-align:start;cursor:pointer}
+.video-thumb{width:140px;height:249px;border-radius:14px;background:linear-gradient(170deg,var(--blue-dk),#1565C0);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 4px 16px rgba(13,61,115,.18)}
+.video-play{width:44px;height:44px;background:rgba(255,255,255,.22);border:2px solid rgba(255,255,255,.55);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s;backdrop-filter:blur(4px)}
+.video-thumb:hover .video-play{background:rgba(255,255,255,.38)}
+.video-play svg{margin-left:3px}
+.video-card-body{padding:8px 2px 0}
+.video-card-name{font-size:12px;font-weight:700;color:var(--blue-dk);margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.video-card-title{font-size:10px;color:var(--muted);line-height:1.4}
 
 /* ══ REVIEWS PHOTO SECTION ══ */
 .reviews-section{padding:24px 0 20px;border-bottom:1px solid var(--border);background:#fff}
@@ -565,68 +567,73 @@ button{font-family:inherit}
 
 <!-- ══════════════════ MINI VIDEO SECTION ══════════════════ -->
 <div class="video-section fade">
-  <div class="sec-tag">Ce spun medicii</div>
-  <h2 class="sec-title" style="font-size:19px">Recomandați de specialiști</h2>
-  <p class="sec-sub" style="margin-bottom:0">Medici pediatri și pneumologi care recomandă zilnic RespiraGo.</p>
-  <div class="video-grid">
+  <div class="video-section-header">
+    <div class="sec-tag">Ce spun medicii</div>
+    <h2 class="sec-title" style="font-size:19px;margin-bottom:2px">Recomandați de specialiști</h2>
+    <p class="sec-sub">Medici pediatri și pneumologi care recomandă zilnic RespiraGo.</p>
+  </div>
+  <div class="video-scroll">
 
     <div class="video-card">
-      <div class="video-thumb" style="background:linear-gradient(135deg,#0D3D73,#1B5EA8)">
+      <div class="video-thumb" style="background:linear-gradient(170deg,#0D3D73,#1B5EA8)">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.55) 100%)"></div>
         <div class="video-play">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
-        <div style="position:absolute;bottom:10px;left:12px;display:flex;align-items:center;gap:7px">
-          <img src="images/doctors/doctor-1.jpg" style="width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.5)"/>
-          <div>
-            <div style="font-size:11px;font-weight:700;color:#fff">Dr. Elena Popescu</div>
-            <div style="font-size:9px;color:rgba(255,255,255,.7)">Medic Primar Pediatrie</div>
+        <div style="position:absolute;bottom:9px;left:9px;right:9px;display:flex;align-items:center;gap:6px">
+          <img src="images/doctors/doctor-1.jpg" style="width:30px;height:30px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,.6);flex-shrink:0"/>
+          <div style="min-width:0">
+            <div style="font-size:10px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Dr. Elena Popescu</div>
+            <div style="font-size:8.5px;color:rgba(255,255,255,.75)">Medic Primar Pediatrie</div>
           </div>
         </div>
-        <div style="position:absolute;top:10px;right:10px;background:rgba(239,68,68,.9);color:#fff;font-size:8px;font-weight:700;padding:2px 7px;border-radius:100px;letter-spacing:.06em">▶ VIDEO</div>
+        <div style="position:absolute;top:8px;left:8px;background:rgba(239,68,68,.92);color:#fff;font-size:7.5px;font-weight:700;padding:2px 6px;border-radius:100px;letter-spacing:.05em">▶ VIDEO</div>
       </div>
       <div class="video-card-body">
         <div class="video-card-name">Dr. Elena Popescu</div>
-        <div class="video-card-title">Medic Primar Pediatrie · Spitalul Grigore Alexandrescu, București</div>
+        <div class="video-card-title">Medic Primar Pediatrie</div>
       </div>
     </div>
 
     <div class="video-card">
-      <div class="video-thumb" style="background:linear-gradient(135deg,#0D4F9E,#1565C0)">
+      <div class="video-thumb" style="background:linear-gradient(170deg,#0D4F9E,#1565C0)">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.55) 100%)"></div>
         <div class="video-play">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
-        <div style="position:absolute;bottom:10px;left:12px;display:flex;align-items:center;gap:7px">
-          <img src="images/doctors/doctor-2.jpg" style="width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.5)"/>
-          <div>
-            <div style="font-size:11px;font-weight:700;color:#fff">Dr. Mihai Ionescu</div>
-            <div style="font-size:9px;color:rgba(255,255,255,.7)">Medic Specialist Pulmonologie</div>
+        <div style="position:absolute;bottom:9px;left:9px;right:9px;display:flex;align-items:center;gap:6px">
+          <img src="images/doctors/doctor-2.jpg" style="width:30px;height:30px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,.6);flex-shrink:0"/>
+          <div style="min-width:0">
+            <div style="font-size:10px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Dr. Mihai Ionescu</div>
+            <div style="font-size:8.5px;color:rgba(255,255,255,.75)">Pulmonologie Pediatrică</div>
           </div>
         </div>
-        <div style="position:absolute;top:10px;right:10px;background:rgba(239,68,68,.9);color:#fff;font-size:8px;font-weight:700;padding:2px 7px;border-radius:100px;letter-spacing:.06em">▶ VIDEO</div>
+        <div style="position:absolute;top:8px;left:8px;background:rgba(239,68,68,.92);color:#fff;font-size:7.5px;font-weight:700;padding:2px 6px;border-radius:100px;letter-spacing:.05em">▶ VIDEO</div>
       </div>
       <div class="video-card-body">
         <div class="video-card-name">Dr. Mihai Ionescu</div>
-        <div class="video-card-title">Medic Specialist Pulmonologie Pediatrică · Cluj-Napoca</div>
+        <div class="video-card-title">Pulmonologie Pediatrică</div>
       </div>
     </div>
 
     <div class="video-card">
-      <div class="video-thumb" style="background:linear-gradient(135deg,#1B4F72,#2874A6)">
+      <div class="video-thumb" style="background:linear-gradient(170deg,#1B4F72,#2874A6)">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.55) 100%)"></div>
         <div class="video-play">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
-        <div style="position:absolute;bottom:10px;left:12px;display:flex;align-items:center;gap:7px">
-          <img src="images/doctors/doctor-3.jpg" style="width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.5)"/>
-          <div>
-            <div style="font-size:11px;font-weight:700;color:#fff">Dr. Ana Dumitrescu</div>
-            <div style="font-size:9px;color:rgba(255,255,255,.7)">Medic Specialist Pediatrie</div>
+        <div style="position:absolute;bottom:9px;left:9px;right:9px;display:flex;align-items:center;gap:6px">
+          <img src="images/doctors/doctor-3.jpg" style="width:30px;height:30px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,.6);flex-shrink:0"/>
+          <div style="min-width:0">
+            <div style="font-size:10px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Dr. Ana Dumitrescu</div>
+            <div style="font-size:8.5px;color:rgba(255,255,255,.75)">Medic Specialist Pediatrie</div>
           </div>
         </div>
-        <div style="position:absolute;top:10px;right:10px;background:rgba(239,68,68,.9);color:#fff;font-size:8px;font-weight:700;padding:2px 7px;border-radius:100px;letter-spacing:.06em">▶ VIDEO</div>
+        <div style="position:absolute;top:8px;left:8px;background:rgba(239,68,68,.92);color:#fff;font-size:7.5px;font-weight:700;padding:2px 6px;border-radius:100px;letter-spacing:.05em">▶ VIDEO</div>
       </div>
       <div class="video-card-body">
         <div class="video-card-name">Dr. Ana Dumitrescu</div>
-        <div class="video-card-title">Medic Specialist Pediatrie · Spitalul Marie Curie, București</div>
+        <div class="video-card-title">Medic Specialist Pediatrie</div>
       </div>
     </div>
 
