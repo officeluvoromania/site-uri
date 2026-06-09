@@ -1,0 +1,1254 @@
+{% layout none %}
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RespiraGo — Nebulizator Portabil MicroMist CleanFlow™</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --dk:    #0A2540;
+  --mid:   #0E3A6E;
+  --gold:  #BF8C2E;
+  --cream: #FAF8F4;
+  --cream2:#F0ECE4;
+  --white: #FFFFFF;
+  --text:  #1A1A1A;
+  --muted: #6B6560;
+  --light: #A8A09A;
+  --bdr:   #E8E0D4;
+  --bdr2:  #D8D0C4;
+  --green: #2E7D32;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:var(--text);-webkit-font-smoothing:antialiased;font-size:14px;line-height:1.6}
+img{display:block;max-width:100%;object-fit:cover}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;background:none;border:none}
+
+/* PLACEHOLDER */
+.ph{background:#EEEBE5;border:1.5px dashed #C4BDB4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;color:#9E9890;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;text-align:center;padding:12px;position:relative}
+.ph svg{opacity:.4}
+.ph-label{opacity:.7;line-height:1.4;padding:0 8px}
+
+/* FADE */
+.fade{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.fade.in{opacity:1;transform:none}
+
+/* ══ OFFER BAR ══ */
+.obar{background:var(--dk);padding:9px 14px}
+.obar-in{max-width:480px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.obar-left{display:flex;flex-direction:column;gap:1px}
+.obar-tag{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.obar-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.obar-sub{font-size:10px;color:rgba(255,255,255,.55)}
+.obar-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.obar-cd{display:flex;align-items:center;gap:2px}
+.cd-u{display:flex;flex-direction:column;align-items:center}
+.cd-n{font-size:15px;font-weight:700;color:#fff;background:rgba(255,255,255,.1);border-radius:3px;padding:1px 5px;min-width:24px;text-align:center;line-height:1.3}
+.cd-l{font-size:7px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:1px}
+.cd-sep{font-size:13px;color:rgba(255,255,255,.3);margin-bottom:5px;padding:0 1px}
+.claim-btn{border:1.5px solid rgba(255,255,255,.35);color:#fff;font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:6px 10px;border-radius:4px;white-space:nowrap;background:rgba(255,255,255,.08);flex-shrink:0}
+
+/* ══ NAV ══ */
+.nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--bdr)}
+.nav-in{max-width:480px;margin:0 auto;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 14px}
+.nav-icon{display:flex;align-items:center;padding:6px;color:var(--dk);position:relative}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;letter-spacing:.3em;color:var(--dk)}
+.cart-n{position:absolute;top:2px;right:2px;width:14px;height:14px;background:var(--dk);color:#fff;border-radius:50%;font-size:8px;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* ══ HERO ══ */
+.hero{position:relative;background:#D8DFE8}
+.hero-img{width:100%;aspect-ratio:1/1;display:block;object-fit:cover}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,37,64,.82) 0%,rgba(10,37,64,.5) 48%,rgba(10,37,64,.08) 100%)}
+.hero-body{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:22px 18px;z-index:2}
+.hero-clin{display:inline-flex;align-items:flex-start;gap:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(8px);border-radius:4px;padding:6px 10px;margin-bottom:14px;max-width:240px}
+.hero-clin-ico{flex-shrink:0;margin-top:1px;opacity:.9}
+.hero-clin-txt{font-size:10px;color:#fff;line-height:1.4}
+.hero-clin-txt strong{color:var(--gold);font-weight:600}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;line-height:1.1;color:#fff;margin-bottom:10px}
+.hero-h1 em{font-style:normal;color:var(--gold)}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.78);line-height:1.55;max-width:240px}
+.hero-cert{position:absolute;bottom:14px;left:14px;z-index:3;background:rgba(255,255,255,.93);border-radius:6px;padding:6px 10px;display:flex;align-items:center;gap:7px}
+.hero-cert-ico{flex-shrink:0;color:var(--dk)}
+.hero-cert-txt{font-size:9px;font-weight:700;color:var(--dk);line-height:1.3;text-transform:uppercase;letter-spacing:.05em}
+
+/* ══ THUMBNAILS ══ */
+.thumbs{background:#fff;border-bottom:1px solid var(--bdr);padding:8px 10px;display:flex;align-items:center;gap:6px}
+.thumbs-row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1}
+.thumbs-row::-webkit-scrollbar{display:none}
+.thumb{width:62px;height:62px;flex-shrink:0;border-radius:5px;border:2px solid var(--bdr);overflow:hidden;cursor:pointer;transition:border-color .2s;background:#eee}
+.thumb img,.thumb-ph{width:100%;height:100%;object-fit:cover}
+.thumb.active{border-color:var(--dk)}
+.t-arr{color:var(--dk);display:flex;align-items:center;padding:4px;opacity:.6}
+
+.kit-link{text-align:center;padding:11px 16px;background:#fff;border-bottom:1px solid var(--bdr)}
+.kit-link a{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--dk);font-weight:500;border-bottom:1px solid var(--dk)}
+
+/* ══ RATING ══ */
+.rating{display:flex;align-items:center;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--bdr);background:#fff;gap:0;font-size:12px}
+.r-stars{color:#D4A017;letter-spacing:.5px;font-size:13px}
+.r-score{font-weight:700;color:var(--text);margin-left:5px}
+.r-pipe{color:var(--light);margin:0 8px;font-size:10px}
+.r-link{color:var(--dk);font-weight:500;border-bottom:1px solid currentColor}
+.r-ct{color:var(--muted)}
+
+/* ══ PRODUCT INFO ══ */
+.pinfo{padding:16px 16px 4px;background:#fff}
+.p-tag{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.p-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;line-height:1.18;color:var(--dk);margin-bottom:8px}
+.p-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px}
+.cpills{display:flex;flex-direction:column;gap:7px;padding-bottom:16px}
+.cpill{display:flex;align-items:center;gap:9px;padding:9px 13px;border:1.5px solid var(--bdr);border-radius:6px;font-size:13px;color:var(--text);background:#fff}
+.cpill-ck{flex-shrink:0;color:var(--dk)}
+
+/* ══ VARIANT SELECTOR ══ */
+.variant-section{padding:0 16px 16px;background:#fff;border-bottom:1px solid var(--bdr)}
+.vsec-lbl{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.variants{display:flex;gap:12px}
+.variant{display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer}
+.variant-circle{width:80px;height:80px;border-radius:50%;border:2px solid var(--bdr);overflow:hidden;transition:border-color .2s,box-shadow .2s;background:var(--cream2);display:flex;align-items:center;justify-content:center}
+.variant.active .variant-circle{border-color:var(--dk);box-shadow:0 0 0 2px var(--dk)}
+.variant-circle img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.variant-circle.ph-v{border-style:dashed;border-color:#C4BDB4}
+.variant-name{font-size:10px;font-weight:600;color:var(--text);text-align:center;line-height:1.3}
+.variant.active .variant-name{color:var(--dk)}
+.variant-badge{font-size:9px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--dk);color:#fff;padding:2px 7px;border-radius:100px}
+
+/* ══ PACKAGE SELECTOR ══ */
+.pkg-sec{padding:16px 16px 6px;background:#fff}
+.pkg-lbl{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.pkg{border:2px solid var(--bdr);border-radius:8px;margin-bottom:8px;overflow:hidden;cursor:pointer;transition:border-color .2s;position:relative;background:#fff}
+.pkg.active{border-color:var(--dk)}
+.pkg-hdr{display:flex;align-items:center;gap:10px;padding:13px 14px}
+.pkg-rb{width:18px;height:18px;flex-shrink:0;border:2px solid var(--bdr);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.pkg.active .pkg-rb{border-color:var(--dk);background:var(--dk)}
+.pkg-rbd{width:6px;height:6px;border-radius:50%;background:#fff;opacity:0}
+.pkg.active .pkg-rbd{opacity:1}
+.pkg-meta{flex:1}
+.pkg-nr{display:flex;align-items:center;gap:7px;margin-bottom:2px}
+.pkg-name{font-size:14px;font-weight:600;color:var(--text)}
+.pkg-badge{background:var(--gold);color:#fff;font-size:9px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:100px}
+.pkg-sub{font-size:11px;color:var(--muted)}
+.pkg-price-area{text-align:right;flex-shrink:0}
+.pkg-price{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--dk);line-height:1}
+.pkg-price-unit{font-size:10px;color:var(--muted);margin-top:2px;text-align:right}
+.pkg-price-old{font-size:11px;color:var(--light);text-decoration:line-through;margin-top:1px}
+.pkg-corner{position:absolute;top:0;right:0;background:var(--dk);color:#fff;font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px 4px 16px;clip-path:polygon(10px 0%,100% 0%,100% 100%,0% 100%)}
+.pkg-body{border-top:1px solid var(--bdr);padding:10px 14px 13px}
+.pkg-benefs{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+.pkg-benef{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text)}
+.pkg-benef-ck{flex-shrink:0;margin-top:1px;color:var(--dk)}
+.wk-lbl{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.wk-row{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.wk-row::-webkit-scrollbar{display:none}
+.wk-item{flex-shrink:0;text-align:center;width:68px}
+.wk-img{width:68px;height:68px;border-radius:7px;background:var(--cream2);border:1.5px solid var(--bdr);overflow:hidden;margin-bottom:3px}
+.wk-img img{width:100%;height:100%}
+.wk-p-old{font-size:9px;color:var(--light);text-decoration:line-through;display:block}
+.wk-name{font-size:9px;color:var(--text);font-weight:500;line-height:1.3;margin-top:1px}
+.pkg-future{display:flex;align-items:center;justify-content:center;gap:5px;width:100%;border-top:1px solid var(--bdr);padding:8px 14px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dk);margin-top:8px;background:none}
+
+.otp{text-align:center;padding:8px 0 4px;font-size:13px;color:var(--muted)}
+.otp a{color:var(--dk);border-bottom:1px solid var(--dk)}
+
+/* ══ ATC ══ */
+.atc-wrap{padding:0 16px 6px;background:#fff}
+.atc-btn{display:block;width:100%;background:var(--dk);color:#fff;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:17px;border:none;border-radius:6px;text-align:center;transition:background .2s}
+.atc-btn:hover{background:var(--mid)}
+.atc-hint{text-align:center;font-size:11px;color:var(--light);padding:7px 16px 14px;background:#fff}
+
+/* ══ CLINICIANS ══ */
+.clin{padding:14px 16px;background:#fff;border-top:1px solid var(--bdr)}
+.clin-in{display:flex;gap:11px;align-items:flex-start}
+.clin-badge{display:flex;flex-direction:column;align-items:center;gap:2px;flex-shrink:0;padding:5px 8px;border:1.5px solid var(--bdr);border-radius:6px;min-width:58px;background:var(--cream)}
+.clin-ico{color:var(--dk);margin-bottom:1px}
+.clin-badge-txt{font-size:8px;font-weight:700;color:var(--dk);letter-spacing:.05em;text-transform:uppercase;line-height:1.2;text-align:center}
+.clin-right{flex:1}
+.clin-txt{font-size:12px;color:var(--text);line-height:1.55}
+.clin-avs{display:flex;margin:5px 0 3px}
+.clin-av{width:22px;height:22px;border-radius:50%;border:2px solid #fff;margin-left:-5px;object-fit:cover;background:var(--cream2);overflow:hidden}
+.clin-av:first-child{margin-left:0}
+.clin-link{font-size:11px;color:var(--dk);font-weight:500;border-bottom:1px solid var(--dk)}
+
+/* ══ GIVES BACK ══ */
+.gb{margin:0 16px 14px;background:var(--cream);border:1.5px solid var(--bdr);border-radius:8px;padding:12px 13px;display:flex;gap:11px;align-items:flex-start}
+.gb-ico{width:30px;height:30px;flex-shrink:0;background:#fff;border-radius:50%;border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center;color:var(--dk)}
+.gb-txt{font-size:12px;color:var(--text);line-height:1.6}
+
+/* ══ TRUST ══ */
+.trust{display:flex;justify-content:space-around;padding:14px 10px;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);background:#fff}
+.ti{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
+.ti-icon{width:40px;height:40px;border:1.5px solid var(--bdr);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--dk)}
+.ti-lbl{font-size:10px;font-weight:600;color:var(--dk);text-align:center;line-height:1.3}
+
+/* ══ WHAT YOU'LL FEEL ══ */
+.wyf{padding:22px 16px;background:var(--cream)}
+.wyf-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;text-align:center;color:var(--dk);margin-bottom:14px}
+.wyf-row{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid var(--bdr)}
+.wyf-row:last-child{border-bottom:none}
+.wyf-ico{width:36px;height:36px;flex-shrink:0;border-radius:50%;background:#fff;border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center;color:var(--dk)}
+.wyf-info{flex:1}
+.wyf-name{font-size:13px;font-weight:600;color:var(--text)}
+.wyf-sub{font-size:11px;color:var(--muted);margin-top:1px}
+.wyf-pct{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--dk);flex-shrink:0}
+
+/* ══ TRANSFORM ══ */
+.tfm{padding:24px 16px;background:#fff;border-top:1px solid var(--bdr);text-align:center}
+.tfm-pill{display:inline-block;background:var(--gold);color:#fff;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;padding:4px 14px;margin-bottom:11px}
+.tfm-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--dk);line-height:1.2;margin-bottom:7px}
+.tfm-sub{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;text-align:left}
+.exp-card{border:1.5px solid var(--bdr);border-radius:8px;overflow:hidden}
+.exp-photo{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.exp-photo.ph{aspect-ratio:3/4}
+.exp-body{padding:8px 10px}
+.exp-name{font-size:12px;font-weight:600;color:var(--dk)}
+.exp-role{font-size:10px;color:var(--muted);line-height:1.35;margin-top:2px}
+.tfm-desc{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:14px}
+.tfm-btn{display:block;width:100%;border:1.5px solid var(--dk);color:var(--dk);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:13px;border-radius:6px;background:none;transition:all .2s}
+.tfm-btn:hover{background:var(--dk);color:#fff}
+
+/* ══ ACCORDION ══ */
+.acc-sec{background:#fff;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
+.acc-item{border-bottom:1px solid var(--bdr)}
+.acc-item:last-child{border-bottom:none}
+.acc-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px;gap:12px;text-align:left;background:none;border:none}
+.acc-txt{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--text)}
+.acc-ico{width:22px;height:22px;flex-shrink:0;border-radius:50%;border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center;transition:transform .3s,background .2s;color:var(--dk);font-size:14px;line-height:1;font-family:sans-serif;font-weight:300}
+.acc-item.open .acc-ico{transform:rotate(45deg);background:var(--dk);border-color:var(--dk);color:#fff}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1)}
+.acc-body-in{padding:0 16px 16px;font-size:13px;color:var(--muted);line-height:1.75}
+.acc-item.open .acc-body{max-height:800px}
+.acc-body-in ul{padding-left:18px}
+.acc-body-in li{margin-bottom:6px}
+.acc-body-in strong{color:var(--dk);font-weight:600}
+
+/* ══ AMBASSADORS ══ */
+.amb{padding:24px 0;background:var(--cream);border-top:1px solid var(--bdr)}
+.amb-hdr{padding:0 16px 14px}
+.amb-sec-tag{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.amb-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--dk)}
+.amb-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 16px}
+.amb-card{border-radius:8px;overflow:hidden;position:relative;cursor:pointer}
+.amb-img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
+.amb-img.ph{aspect-ratio:9/16}
+.amb-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.58) 100%)}
+.amb-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.amb-info{position:absolute;bottom:8px;left:9px;right:9px}
+.amb-name{font-size:10px;font-weight:700;color:#fff}
+.amb-city{font-size:8.5px;color:rgba(255,255,255,.7)}
+.amb-rb{position:absolute;top:8px;left:8px;background:rgba(185,25,25,.9);color:#fff;font-size:7px;font-weight:700;padding:2px 5px;border-radius:3px;letter-spacing:.05em}
+
+/* ══ TRUSTED DARK ══ */
+.trusted{background:var(--dk);padding:26px 0;overflow:hidden}
+.trusted-hdr{padding:0 16px 18px;text-align:center}
+.trusted-pill{display:inline-flex;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;padding:5px 14px;margin-bottom:13px}
+.trusted-h{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#fff;line-height:1.18;margin-bottom:5px}
+.trusted-it{font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:var(--gold);line-height:1.2}
+.t-scroll{display:flex;gap:10px;padding:0 16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none}
+.t-scroll::-webkit-scrollbar{display:none}
+.t-card{min-width:220px;max-width:220px;scroll-snap-align:start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;overflow:hidden;flex-shrink:0}
+.t-photo{width:100%;height:196px;object-fit:cover;display:block}
+.t-photo.ph{height:196px}
+.t-body{padding:12px}
+.t-name{font-size:13px;font-weight:600;color:#fff;margin-bottom:2px}
+.t-loc{font-size:10px;color:rgba(255,255,255,.55);margin-bottom:7px}
+.t-badge{display:inline-flex;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.78);font-size:9px;font-weight:600;padding:2px 8px;border-radius:100px;margin-bottom:6px}
+.t-quote{font-size:11px;color:rgba(255,255,255,.68);line-height:1.6;font-style:italic;font-family:'Cormorant Garamond',serif}
+.t-dots{display:flex;justify-content:center;gap:5px;margin-top:14px}
+.t-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.22);border:none;padding:0;cursor:pointer;transition:all .2s}
+.t-dot.active{background:#fff;width:18px;border-radius:100px}
+.t-rating{display:flex;justify-content:center;align-items:center;gap:8px;padding:14px 16px 0;font-size:12px;color:rgba(255,255,255,.6)}
+.t-rating-s{color:#D4A017;font-size:13px}
+
+/* ══ VERIFIED REVIEWS ══ */
+.vrev{padding:26px 16px;background:#fff;border-top:1px solid var(--bdr)}
+.vrev-pill{display:inline-flex;background:var(--cream);border:1.5px solid var(--bdr);color:var(--dk);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:100px;padding:5px 14px;margin-bottom:13px}
+.vrev-h{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--text);line-height:1.22;margin-bottom:6px}
+.vrev-it{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--gold);margin-bottom:18px;line-height:1.3}
+.tp-box{border:1.5px solid var(--bdr);border-radius:7px;padding:12px;background:var(--cream);text-align:center;margin-bottom:16px}
+.tp-logo{font-size:14px;font-weight:800;color:#00B67A;letter-spacing:-.02em;margin-bottom:3px}
+.tp-s{color:#00B67A;font-size:17px;letter-spacing:2px;margin-bottom:2px}
+.tp-sc{font-size:11px;color:var(--muted)}
+.rev-card{border:1.5px solid var(--bdr);border-radius:8px;padding:13px;margin-bottom:9px}
+.rev-s{color:#D4A017;font-size:12px;letter-spacing:.5px;margin-bottom:5px}
+.rev-h{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.rev-t{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:7px}
+.rev-au{font-size:11px;color:var(--dk);font-weight:500}
+.rev-vf{font-size:10px;color:var(--green);font-weight:500}
+
+/* ══ CLINICAL ══ */
+.clinical{padding:30px 16px;position:relative;overflow:hidden;text-align:center}
+.clinical-bg{position:absolute;inset:0;z-index:0}
+.clinical-bg img,.clinical-bg.ph{width:100%;height:100%;object-fit:cover}
+.clinical-bg-ov{position:absolute;inset:0;background:linear-gradient(160deg,rgba(6,20,42,.93) 0%,rgba(10,37,64,.88) 50%,rgba(8,28,54,.95) 100%);z-index:1}
+.clinical-content{position:relative;z-index:2}
+.clinical-h{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#fff;line-height:1.18;margin-bottom:9px}
+.clinical-sub{font-size:13px;color:rgba(255,255,255,.65);line-height:1.65;margin-bottom:18px}
+.clinical-btn{display:inline-block;border:2px solid rgba(255,255,255,.5);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:12px 22px;border-radius:6px;background:rgba(255,255,255,.06);margin-bottom:24px;transition:all .2s}
+.cstats{display:flex;flex-direction:column;gap:10px}
+.cstat{background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:18px 16px;backdrop-filter:blur(10px);text-align:center}
+.cstat-h{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:#fff;margin-bottom:5px}
+.cstat-pct{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:600;color:var(--gold);line-height:1;margin-bottom:4px}
+.cstat-desc{font-size:11px;color:rgba(255,255,255,.58);line-height:1.5}
+
+/* ══ TECH TABLE ══ */
+.tech{padding:28px 16px;background:#fff;border-top:1px solid var(--bdr)}
+.tech-h{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--dk);text-align:center;margin-bottom:5px;line-height:1.22}
+.tech-sub{font-size:12px;color:var(--muted);text-align:center;margin-bottom:18px}
+.tech-btn{display:flex;width:100%;background:var(--dk);color:#fff;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:13px;border:none;border-radius:6px;align-items:center;justify-content:center;gap:7px;margin-bottom:16px}
+.tech-tbl{border:1.5px solid var(--bdr);border-radius:10px;overflow:hidden}
+.tbl-hdr{display:grid;grid-template-columns:2.4fr 1fr 1.3fr;background:var(--cream);border-bottom:1.5px solid var(--bdr)}
+.th{padding:9px 10px;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.th.hi{color:var(--dk);text-align:right;padding-right:12px}
+.trow{border-bottom:1px solid var(--bdr)}
+.trow:last-child{border-bottom:none}
+.trow-main{display:grid;grid-template-columns:2.4fr 1fr 1.3fr;align-items:center;padding:10px 10px 4px}
+.t-ingr{display:flex;align-items:center;gap:8px}
+.t-ico{width:28px;height:28px;border-radius:6px;background:var(--cream2);border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.t-ico img{width:100%;height:100%}
+.t-ico.ph{font-size:0}
+.t-ingr-name{font-size:12px;font-weight:600;color:var(--text)}
+.t-ingr-type{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.t-old{font-size:12px;color:var(--muted);text-align:center}
+.t-new{text-align:right;padding-right:12px}
+.t-new-val{font-size:15px;font-weight:700;color:var(--dk)}
+.t-new-badge{display:inline-block;background:var(--dk);color:#fff;font-size:8px;font-weight:700;padding:2px 6px;border-radius:100px;margin-top:2px}
+.trow-benef{padding:0 10px 9px;font-family:'Cormorant Garamond',serif;font-size:11px;font-style:italic;color:var(--gold)}
+
+/* ══ FINAL CTA ══ */
+.fcta{background:var(--dk);padding:26px 16px;text-align:center}
+.fcta-pill{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:100px;padding:5px 14px;margin-bottom:11px}
+.fcta-h{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#fff;line-height:1.2;margin-bottom:5px}
+.fcta-sub{font-size:12px;color:rgba(255,255,255,.55);margin-bottom:18px}
+.fpkgs{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.fpkg{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.14);border-radius:8px;padding:10px 13px;cursor:pointer;transition:all .2s}
+.fpkg.active{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.55)}
+.fpkg-rb{width:14px;height:14px;border-radius:50%;border:2px solid rgba(255,255,255,.4);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.fpkg.active .fpkg-rb{border-color:#fff;background:#fff}
+.fpkg-rbd{width:5px;height:5px;border-radius:50%;background:var(--dk);display:none}
+.fpkg.active .fpkg-rbd{display:block}
+.fpkg-name{flex:1;font-size:12px;font-weight:500;color:#fff;text-align:left}
+.fpkg-price{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#fff}
+.fcta-btn{display:block;width:100%;background:#fff;color:var(--dk);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:17px;border:none;border-radius:6px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.16);transition:transform .1s}
+.fcta-btn:active{transform:scale(.99)}
+.fcta-hint{font-size:11px;color:rgba(255,255,255,.38);margin-top:7px}
+
+/* ══ FOOTER ══ */
+.footer{padding:26px 16px 100px;text-align:center;background:var(--cream);border-top:1px solid var(--bdr)}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;letter-spacing:.3em;color:var(--dk);margin-bottom:2px}
+.footer-sub{font-size:11px;color:var(--light);margin-bottom:12px}
+.footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:14px}
+.footer-links a{font-size:11px;color:var(--muted)}
+
+/* ══ STICKY BAR ══ */
+.sbar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-top:1px solid var(--bdr);box-shadow:0 -4px 16px rgba(0,0,0,.08);transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.sbar.show{transform:translateY(0)}
+.sbar-in{max-width:480px;margin:0 auto;display:flex;align-items:center;gap:8px;padding:8px 12px}
+.sbar-sel{flex:1;min-width:0;background:var(--cream);border:1.5px solid var(--bdr);border-radius:6px;padding:7px 11px;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.sbar-sel-info{min-width:0}
+.sbar-sel-name{font-size:11px;font-weight:600;color:var(--dk);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbar-sel-price{font-size:10px;color:var(--muted)}
+.sbar-add{background:var(--dk);color:#fff;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:12px 22px;border:none;border-radius:6px;flex-shrink:0;transition:background .2s}
+.sbar-add:hover{background:var(--mid)}
+
+hr.sdiv{border:none;border-top:1px solid var(--bdr);margin:0}
+</style>
+</head>
+<body>
+
+<!-- OFFER BAR -->
+<div class="obar">
+  <div class="obar-in">
+    <div class="obar-left">
+      <div class="obar-tag"><div class="obar-dot"></div>OFERTĂ BINE VENIT · 30% Reducere + Kit Cadou Gratuit</div>
+      <div class="obar-sub">Livrare Gratuită la toate comenzile</div>
+    </div>
+    <div class="obar-right">
+      <div class="obar-cd">
+        <div class="cd-u"><div class="cd-n" id="cd-h">08</div><div class="cd-l">Ore</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-u"><div class="cd-n" id="cd-m">47</div><div class="cd-l">Min</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-u"><div class="cd-n" id="cd-s">23</div><div class="cd-l">Sec</div></div>
+      </div>
+      <button class="claim-btn">REVENDICĂ →</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-in">
+    <button class="nav-icon" aria-label="Meniu">
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="0" y1="1" x2="20" y2="1"/><line x1="0" y1="7" x2="14" y2="7"/><line x1="0" y1="13" x2="20" y2="13"/></svg>
+    </button>
+    <span class="nav-logo">R · E · S · P · I · R · A · G · O</span>
+    <button class="nav-icon" aria-label="Coș">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span class="cart-n" id="cart-n">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img class="hero-img" src="{{ 'respirago-hero.png' | asset_url }}" alt="RespiraGo — Nebulizator Portabil MicroMist" id="hero-img"/>
+  <div class="hero-ov"></div>
+  <div class="hero-body">
+    <div class="hero-clin">
+      <svg class="hero-clin-ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="hero-clin-txt"><strong>Alegerea Medicilor Pediatri</strong><br/>3 specialiști recomandă RespiraGo</div>
+    </div>
+    <h1 class="hero-h1">Înlocuiește Aparatul<br/>Clasic Zgomotos<br/>cu <em>RespiraGo</em></h1>
+    <p class="hero-sub">Formulat cu medici pediatri pentru familii cu copii.<br/>Dovedit clinic să funcționeze.</p>
+  </div>
+  <div class="hero-cert">
+    <svg class="hero-cert-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="6"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+    <div class="hero-cert-txt">Certificat<br/>Medical CE</div>
+  </div>
+</div>
+
+<!-- THUMBNAILS -->
+<div class="thumbs">
+  <button class="t-arr" onclick="shiftThumbs(-1)">
+    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <div class="thumbs-row" id="thumbs-row">
+    <div class="thumb active" onclick="selThumb(this,'{{ "respirago-hero.png" | asset_url }}')"><img src="{{ 'respirago-hero.png' | asset_url }}" alt=""/></div>
+    <div class="thumb" onclick="selThumb(this,'{{ "respirago-5.png" | asset_url }}')"><img src="{{ 'respirago-5.png' | asset_url }}" alt=""/></div>
+    <div class="thumb" onclick="selThumb(this,'{{ "respirago-9.png" | asset_url }}')"><img src="{{ 'respirago-9.png' | asset_url }}" alt=""/></div>
+    <div class="thumb" onclick="selThumb(this,'{{ "respirago-6.png" | asset_url }}')"><img src="{{ 'respirago-6.png' | asset_url }}" alt=""/></div>
+    <div class="thumb" onclick="selThumb(this,'{{ "respirago-10.png" | asset_url }}')"><img src="{{ 'respirago-10.png' | asset_url }}" alt=""/></div>
+    <div class="thumb" onclick="selThumb(this,'{{ "respirago-11.png" | asset_url }}')"><img src="{{ 'respirago-11.png' | asset_url }}" alt=""/></div>
+    <div class="thumb" onclick="selThumb(this,'{{ "respirago-8.png" | asset_url }}')"><img src="{{ 'respirago-8.png' | asset_url }}" alt=""/></div>
+    <div class="thumb" onclick="selThumb(this,'{{ "respirago-1.png" | asset_url }}')"><img src="{{ 'respirago-1.png' | asset_url }}" alt=""/></div>
+    <div class="thumb" onclick="selThumb(this,'{{ "respirago-3.png" | asset_url }}')"><img src="{{ 'respirago-3.png' | asset_url }}" alt=""/></div>
+    <div class="thumb" onclick="selThumb(this,'{{ "respirago-4.png" | asset_url }}')"><img src="{{ 'respirago-4.png' | asset_url }}" alt=""/></div>
+    <div class="thumb" onclick="selThumb(this,'{{ "respirago-7.png" | asset_url }}')"><img src="{{ 'respirago-7.png' | asset_url }}" alt=""/></div>
+  </div>
+  <button class="t-arr" onclick="shiftThumbs(1)">
+    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<div class="kit-link">
+  <a href="#">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="margin-right:3px"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>
+    Vezi Conținut Kit Complet
+  </a>
+</div>
+
+<!-- RATING -->
+<div class="rating">
+  <span class="r-stars">★★★★★</span>
+  <span class="r-score">4.8</span>
+  <span class="r-pipe">|</span>
+  <span class="r-link">752 review-uri</span>
+  <span class="r-pipe">|</span>
+  <span class="r-ct">10.000+ familii</span>
+</div>
+
+<!-- PRODUCT INFO -->
+<div class="pinfo">
+  <div class="p-tag">Nebulizator portabil mesh</div>
+  <h2 class="p-title">Aerosol Portabil RespiraGo</h2>
+  <p class="p-desc">Particule ultra-fine de 1–5 microni care ajung direct la bronhii. Co-creat cu medici pediatri pentru sesiuni care se termină cu succes — fără plâns, fără frică, fără sesiune abandonată.</p>
+  <div class="cpills">
+    <div class="cpill">
+      <svg class="cpill-ck" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Înlocuiește aparatul clasic cu compresor zgomotos
+    </div>
+    <div class="cpill">
+      <svg class="cpill-ck" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      94% sesiuni acceptate · 97% sesiuni complete
+    </div>
+    <div class="cpill">
+      <svg class="cpill-ck" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Silențios sub 38 dB · Portabil USB-C · Baterie 3+ sesiuni
+    </div>
+    <div class="cpill">
+      <svg class="cpill-ck" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      30 Zile Garanție Bani Înapoi
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT SELECTOR -->
+<div class="variant-section">
+  <div class="vsec-lbl">Selectează varianta:</div>
+  <div class="variants" id="variants">
+    <div class="variant active" onclick="selVariant(this,0,'RespiraGo Acasă','149')">
+      <div class="variant-circle">
+        <!-- PLACEHOLDER: fotografie circulară kit 1x — recomandare 300×300px -->
+        <div class="ph" style="width:100%;height:100%;border:none;border-radius:50%">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9E9890" stroke-width="1.5" stroke-linecap="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span class="ph-label">FOTO KIT 1X</span>
+        </div>
+      </div>
+      <div class="variant-badge">BEST</div>
+      <div class="variant-name">Acasă</div>
+    </div>
+    <div class="variant" onclick="selVariant(this,1,'Acasă + Bunici','199')">
+      <div class="variant-circle">
+        <div class="ph" style="width:100%;height:100%;border:none;border-radius:50%">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9E9890" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="7" r="4"/><circle cx="17" cy="7" r="2.5"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M19 21v-1a3 3 0 00-3-3"/></svg>
+          <span class="ph-label">FOTO KIT 2X</span>
+        </div>
+      </div>
+      <div class="variant-name">Acasă +<br/>Bunici</div>
+    </div>
+    <div class="variant" onclick="selVariant(this,2,'3x + Vacanță','249')">
+      <div class="variant-circle">
+        <div class="ph" style="width:100%;height:100%;border:none;border-radius:50%">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9E9890" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="7" width="6" height="10" rx="1"/><rect x="9" y="4" width="6" height="13" rx="1"/><rect x="16" y="7" width="6" height="10" rx="1"/></svg>
+          <span class="ph-label">FOTO KIT 3X</span>
+        </div>
+      </div>
+      <div class="variant-name">3x +<br/>Vacanță</div>
+    </div>
+  </div>
+</div>
+
+<!-- PACKAGE SELECTOR -->
+<div class="pkg-sec">
+  <div class="pkg-lbl">Abonează-te &amp; Economisești:</div>
+  <div id="pkgs">
+
+    <div class="pkg active" id="pkg-0" onclick="selPkg(0)">
+      <div class="pkg-corner">Best Value</div>
+      <div class="pkg-hdr">
+        <div class="pkg-rb"><div class="pkg-rbd"></div></div>
+        <div class="pkg-meta">
+          <div class="pkg-nr">
+            <span class="pkg-name">3x Pachet Familial</span>
+            <span class="pkg-badge">SAVE 30%</span>
+          </div>
+          <div class="pkg-sub">83 lei / aparat</div>
+        </div>
+        <div class="pkg-price-area">
+          <div class="pkg-price">249 <span style="font-size:15px;font-weight:400;font-family:'Inter',sans-serif">lei</span></div>
+          <div class="pkg-price-unit">83 RON / APARAT</div>
+          <div class="pkg-price-old">357 lei</div>
+        </div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-benefs">
+          <div class="pkg-benef">
+            <svg class="pkg-benef-ck" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            3 aparate RespiraGo MicroMist CleanFlow™
+          </div>
+          <div class="pkg-benef">
+            <svg class="pkg-benef-ck" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Kit complet inclus cu fiecare aparat
+          </div>
+          <div class="pkg-benef">
+            <svg class="pkg-benef-ck" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Economie maximă — cel mai mic preț per aparat
+          </div>
+          <div class="pkg-benef">
+            <svg class="pkg-benef-ck" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Livrare GRATUITĂ
+          </div>
+          <div class="pkg-benef">
+            <svg class="pkg-benef-ck" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Garanție 30 Zile Bani Înapoi
+          </div>
+        </div>
+        <div class="wk-lbl">KIT INCLUS — sosește cu prima comandă</div>
+        <div class="wk-row">
+          <div class="wk-item">
+            <div class="wk-img">
+              <!-- PLACEHOLDER: fotografie mască copii — 200×200px -->
+              <div class="ph" style="height:100%">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9E9890" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V8l-8-3-8 3v4c0 6 8 10 8 10z"/></svg>
+              </div>
+            </div>
+            <span class="wk-p-old">45 lei</span>
+            <div class="wk-name">3x Mască Copii</div>
+          </div>
+          <div class="wk-item">
+            <div class="wk-img">
+              <!-- PLACEHOLDER: fotografie mască adulți — 200×200px -->
+              <div class="ph" style="height:100%">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9E9890" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="5"/><path d="M3 21v-2a7 7 0 0114 0v2"/></svg>
+              </div>
+            </div>
+            <span class="wk-p-old">36 lei</span>
+            <div class="wk-name">3x Mască Adulți</div>
+          </div>
+          <div class="wk-item">
+            <div class="wk-img">
+              <!-- PLACEHOLDER: fotografie piesă bucală — 200×200px -->
+              <div class="ph" style="height:100%">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9E9890" stroke-width="1.5" stroke-linecap="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>
+              </div>
+            </div>
+            <span class="wk-p-old">30 lei</span>
+            <div class="wk-name">3x Piesă Bucală</div>
+          </div>
+          <div class="wk-item">
+            <div class="wk-img">
+              <!-- PLACEHOLDER: fotografie tub silicon — 200×200px -->
+              <div class="ph" style="height:100%">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9E9890" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16v4H4zM4 16h16v4H4z"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
+              </div>
+            </div>
+            <span class="wk-p-old">24 lei</span>
+            <div class="wk-name">3x Tub Silicon</div>
+          </div>
+        </div>
+        <button class="pkg-future">ACCESORII BONUS INCLUSE ∨</button>
+      </div>
+    </div>
+
+    <div class="pkg" id="pkg-1" onclick="selPkg(1)">
+      <div class="pkg-hdr">
+        <div class="pkg-rb"><div class="pkg-rbd"></div></div>
+        <div class="pkg-meta">
+          <div class="pkg-nr">
+            <span class="pkg-name">2x Acasă + Bunici</span>
+            <span class="pkg-badge">SAVE 20%</span>
+          </div>
+          <div class="pkg-sub">99 lei / aparat</div>
+        </div>
+        <div class="pkg-price-area">
+          <div class="pkg-price">199 <span style="font-size:15px;font-weight:400;font-family:'Inter',sans-serif">lei</span></div>
+          <div class="pkg-price-old">285 lei</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="otp"><a href="#" id="otp-link" onclick="selOtp();return false;">Cumpărare unică 149 lei</a></div>
+</div>
+
+<!-- ADD TO CART -->
+<div class="atc-wrap">
+  <button class="atc-btn" id="atc-btn" onclick="addToCart()">ADAUGĂ ÎN COȘ — 249 LEI</button>
+</div>
+<div class="atc-hint">🔒 Plată securizată &nbsp;·&nbsp; Ramburs sau card &nbsp;·&nbsp; Livrare 1–3 zile</div>
+
+<!-- CLINICIANS -->
+<div class="clin">
+  <div class="clin-in">
+    <div class="clin-badge">
+      <svg class="clin-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="clin-badge-txt">Alegerea<br/>Medicilor</div>
+    </div>
+    <div class="clin-right">
+      <div class="clin-txt"><strong>3 medici pediatri recomandă RespiraGo</strong> pacienților lor fără compensații financiare.</div>
+      <div class="clin-avs">
+        <img class="clin-av" src="{{ 'respirago-doctor-1.jpg' | asset_url }}" alt="Dr. Elena Popescu"/>
+        <img class="clin-av" src="{{ 'respirago-doctor-2.jpg' | asset_url }}" alt="Dr. Mihai Ionescu"/>
+        <img class="clin-av" src="{{ 'respirago-doctor-3.jpg' | asset_url }}" alt="Dr. Ana Dumitrescu"/>
+      </div>
+      <span class="clin-link">Vezi medicii &amp; află mai mult</span>
+    </div>
+  </div>
+</div>
+
+<!-- GIVES BACK -->
+<div class="gb">
+  <div class="gb-ico">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+  </div>
+  <div class="gb-txt"><strong>Fiecare comandă contează</strong> — o parte din profitul RespiraGo susține programul <strong>Respirăm România</strong>, donând aparate familiilor fără posibilități din mediul rural. Până acum am ajutat <strong>1.200+ familii</strong>.</div>
+</div>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="ti">
+    <div class="ti-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <div class="ti-lbl">30 Zile Bani<br/>Înapoi</div>
+  </div>
+  <div class="ti">
+    <div class="ti-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+    </div>
+    <div class="ti-lbl">Livrare<br/>Gratuită</div>
+  </div>
+  <div class="ti">
+    <div class="ti-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+    </div>
+    <div class="ti-lbl">Plată la<br/>Livrare</div>
+  </div>
+</div>
+
+<!-- WHAT YOU'LL FEEL -->
+<div class="wyf fade">
+  <div class="wyf-title">Ce Vei Simți</div>
+  <div class="wyf-row">
+    <div class="wyf-ico">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+    </div>
+    <div class="wyf-info">
+      <div class="wyf-name">Respirație Ușurată</div>
+      <div class="wyf-sub">94% au simțit diferența din prima sesiune</div>
+    </div>
+    <div class="wyf-pct">94%</div>
+  </div>
+  <div class="wyf-row">
+    <div class="wyf-ico">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 11.08 22 12 12 17 2 12 2 11.08"/><path d="M2 7l10 5 10-5-10-5z"/></svg>
+    </div>
+    <div class="wyf-info">
+      <div class="wyf-name">Sesiune Completă</div>
+      <div class="wyf-sub">97% finalizează tratamentul integral</div>
+    </div>
+    <div class="wyf-pct">97%</div>
+  </div>
+  <div class="wyf-row">
+    <div class="wyf-ico">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </div>
+    <div class="wyf-info">
+      <div class="wyf-name">Somn Neîntrerupt</div>
+      <div class="wyf-sub">91% pot face sesiunea fără a trezi casa</div>
+    </div>
+    <div class="wyf-pct">91%</div>
+  </div>
+  <div class="wyf-row">
+    <div class="wyf-ico">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+    </div>
+    <div class="wyf-info">
+      <div class="wyf-name">Recomandă Altor Părinți</div>
+      <div class="wyf-sub">99% recomandă RespiraGo</div>
+    </div>
+    <div class="wyf-pct">99%</div>
+  </div>
+</div>
+
+<!-- TRANSFORMATION PROGRAM -->
+<div class="tfm fade">
+  <div class="tfm-pill">PROGRAM COMPLET INCLUS</div>
+  <div class="tfm-title">Programul 30 Zile RespiraGo</div>
+  <div class="tfm-sub">Acces exclusiv la consultații online cu medicii noștri parteneri specialiști în pediatrie și pneumologie.</div>
+  <div class="exp-grid">
+    <div class="exp-card">
+      <img class="exp-photo" src="{{ 'respirago-doctor-1.jpg' | asset_url }}" alt="Dr. Elena Popescu"/>
+      <div class="exp-body">
+        <div class="exp-name">Dr. Elena Popescu</div>
+        <div class="exp-role">Medic Primar Pediatrie · Spital Grigore Alexandrescu</div>
+      </div>
+    </div>
+    <div class="exp-card">
+      <img class="exp-photo" src="{{ 'respirago-doctor-2.jpg' | asset_url }}" alt="Dr. Mihai Ionescu"/>
+      <div class="exp-body">
+        <div class="exp-name">Dr. Mihai Ionescu</div>
+        <div class="exp-role">Pulmonologie Pediatrică · Cluj-Napoca</div>
+      </div>
+    </div>
+    <div class="exp-card">
+      <img class="exp-photo" src="{{ 'respirago-doctor-3.jpg' | asset_url }}" alt="Dr. Ana Dumitrescu"/>
+      <div class="exp-body">
+        <div class="exp-name">Dr. Ana Dumitrescu</div>
+        <div class="exp-role">Medic Specialist Pediatrie · Timișoara</div>
+      </div>
+    </div>
+    <div class="exp-card">
+      <!-- PLACEHOLDER: fotografie doctor 4 — aspect ratio 3/4, min 400×533px -->
+      <div class="exp-photo ph" style="aspect-ratio:3/4">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#9E9890" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span class="ph-label">FOTO MEDIC 4<br/>400 × 533px</span>
+      </div>
+      <div class="exp-body">
+        <div class="exp-name">Dr. Radu Constantin</div>
+        <div class="exp-role">Medic Specialist ORL · București</div>
+      </div>
+    </div>
+  </div>
+  <div class="tfm-desc">Primești ghiduri personalizate, conținut exclusiv și acces direct la specialiști în sănătatea respiratorie a copilului.</div>
+  <button class="tfm-btn">AFLĂ MAI MULT DESPRE PROGRAM ›</button>
+</div>
+
+<!-- ACCORDION -->
+<div class="acc-sec">
+  <div class="acc-item open">
+    <button class="acc-btn" onclick="togAcc(this)">
+      <span class="acc-txt">Componente &amp; Conținut Kit</span>
+      <span class="acc-ico">+</span>
+    </button>
+    <div class="acc-body">
+      <div class="acc-body-in">
+        <p>Rezervorul translucid de <strong>5 ml</strong> este compatibil cu orice soluție medicală prescrisă: salin, Ventolin, Flixotide, Pulmicort.</p>
+        <ul style="margin-top:8px">
+          <li><strong>Nebulizator MicroMist</strong> — 6.000 micro-orificii, membrană piezoelectrică</li>
+          <li><strong>Mască copii</strong> (0–6 ani) + <strong>Mască adulți</strong></li>
+          <li><strong>Piesă bucală</strong> + <strong>Tub silicon prelungitor</strong></li>
+          <li><strong>Cablu USB-C</strong> pentru încărcare</li>
+          <li>Dimensiuni: 12×6×4 cm · Greutate: 120g · Garanție: 2 ani</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="acc-item">
+    <button class="acc-btn" onclick="togAcc(this)">
+      <span class="acc-txt">Testat Independent</span>
+      <span class="acc-ico">+</span>
+    </button>
+    <div class="acc-body">
+      <div class="acc-body-in">
+        <p>RespiraGo a fost testat independent de laboratoare medicale acreditate CE. Certificat conform <strong>Directivei EU 93/42/EEC</strong>. Particule MMAD de <strong>1–5 μm</strong> verificate prin testare spectrometrică. Liber de contaminanți. Materiale hipoalergenice certificate.</p>
+      </div>
+    </div>
+  </div>
+  <div class="acc-item">
+    <button class="acc-btn" onclick="togAcc(this)">
+      <span class="acc-txt">Cum se Folosește</span>
+      <span class="acc-ico">+</span>
+    </button>
+    <div class="acc-body">
+      <div class="acc-body-in">
+        <ul>
+          <li><strong>1.</strong> Umple rezervorul cu 2–5 ml soluție prescrisă de medic</li>
+          <li><strong>2.</strong> Atașează masca potrivită — copii sau adulți</li>
+          <li><strong>3.</strong> Apasă butonul — luminiță albastră confirmă funcționarea</li>
+          <li><strong>4.</strong> Sesiune completă în 10–15 minute</li>
+          <li><strong>5.</strong> Demontează cele 3 piese, clătește cu apă caldă</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="acc-item">
+    <button class="acc-btn" onclick="togAcc(this)">
+      <span class="acc-txt">Note de Calitate</span>
+      <span class="acc-ico">+</span>
+    </button>
+    <div class="acc-body">
+      <div class="acc-body-in">
+        <p>Silențios <strong>sub 38 dB</strong>. Reziduu sub <strong>0.1 ml</strong>. Baterie pentru <strong>3+ sesiuni</strong> complete dintr-o singură încărcare USB-C (45 minute de funcționare continuă).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AMBASSADORS / VIDEO -->
+<div class="amb fade">
+  <div class="amb-hdr">
+    <div class="amb-sec-tag">Ce spun familiile noastre</div>
+    <div class="amb-title">Poveștile Reale</div>
+  </div>
+  <div class="amb-grid">
+    <div class="amb-card">
+      <img class="amb-img" src="{{ 'respirago-review-1.jpg' | asset_url }}" alt="Andreea M."/>
+      <div class="amb-ov"></div>
+      <div class="amb-rb">▶ VIDEO</div>
+      <div class="amb-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      <div class="amb-info"><div class="amb-name">Andreea M.</div><div class="amb-city">București · Radu, 2 ani</div></div>
+    </div>
+    <div class="amb-card">
+      <img class="amb-img" src="{{ 'respirago-review-2.jpg' | asset_url }}" alt="Ioana P."/>
+      <div class="amb-ov"></div>
+      <div class="amb-rb">▶ VIDEO</div>
+      <div class="amb-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      <div class="amb-info"><div class="amb-name">Ioana P.</div><div class="amb-city">Cluj · Maria, 3 ani</div></div>
+    </div>
+    <div class="amb-card">
+      <!-- PLACEHOLDER: video testimonial 3 — aspect ratio 9/16, min 400×711px -->
+      <div class="amb-img ph" style="aspect-ratio:9/16;background:#D8DFE8">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#9E9890" stroke-width="1.5" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span class="ph-label">VIDEO<br/>TESTIMONIAL 3<br/>400×711px</span>
+      </div>
+      <div class="amb-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      <div class="amb-info"><div class="amb-name">Mirela D.</div><div class="amb-city">Sibiu · Matei, 4 ani</div></div>
+    </div>
+    <div class="amb-card">
+      <!-- PLACEHOLDER: video testimonial 4 — aspect ratio 9/16, min 400×711px -->
+      <div class="amb-img ph" style="aspect-ratio:9/16;background:#D8DFE8">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#9E9890" stroke-width="1.5" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span class="ph-label">VIDEO<br/>TESTIMONIAL 4<br/>400×711px</span>
+      </div>
+      <div class="amb-play"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      <div class="amb-info"><div class="amb-name">Raluca T.</div><div class="amb-city">Timișoara · Emma, 18 luni</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUSTED DARK -->
+<div class="trusted fade">
+  <div class="trusted-hdr">
+    <div class="trusted-pill">DE ÎNCREDERE PENTRU FAMILIILE DIN ROMÂNIA</div>
+    <div class="trusted-h">Bunici. Părinți.<br/>10.000+ Familii.</div>
+    <div class="trusted-it">Toți respiră cu RespiraGo.</div>
+  </div>
+  <div class="t-scroll" id="t-scroll">
+    <div class="t-card">
+      <img class="t-photo" src="{{ 'respirago-1.png' | asset_url }}" alt="Maria Popescu"/>
+      <div class="t-body">
+        <div class="t-name">Maria Popescu</div>
+        <div class="t-loc">București · bunica lui Radu</div>
+        <div class="t-badge">10.000+ Familii</div>
+        <div class="t-quote">„Silențios, ușor de folosit, perfect pentru vârsta mea. Nepoții nu mai plâng la aerosoli."</div>
+      </div>
+    </div>
+    <div class="t-card">
+      <img class="t-photo" src="{{ 'respirago-7.png' | asset_url }}" alt="Ion Ionescu"/>
+      <div class="t-body">
+        <div class="t-name">Ion Ionescu</div>
+        <div class="t-loc">Cluj · bunicul Mariei</div>
+        <div class="t-badge">Recomandat de medic</div>
+        <div class="t-quote">„Medicul mi l-a recomandat. Diferența față de cel vechi e uriașă."</div>
+      </div>
+    </div>
+    <div class="t-card">
+      <img class="t-photo" src="{{ 'respirago-3.png' | asset_url }}" alt="Elena Constantin"/>
+      <div class="t-body">
+        <div class="t-name">Elena Constantin</div>
+        <div class="t-loc">Timișoara · bunica Emmei</div>
+        <div class="t-badge">Verificat ✓</div>
+        <div class="t-quote">„Simplu, mic, silențios. Mă descurc singură perfect."</div>
+      </div>
+    </div>
+    <div class="t-card">
+      <img class="t-photo" src="{{ 'respirago-4.png' | asset_url }}" alt="Rodica Dinu"/>
+      <div class="t-body">
+        <div class="t-name">Rodica Dinu</div>
+        <div class="t-loc">Iași · bunica lui Alex</div>
+        <div class="t-badge">Cumpărător verificat</div>
+        <div class="t-quote">„Am luat 2x — unul la mine, unul la fiică-mea. Bani bine cheltuiți."</div>
+      </div>
+    </div>
+  </div>
+  <div class="t-dots" id="t-dots">
+    <button class="t-dot active" onclick="tGo(0)"></button>
+    <button class="t-dot" onclick="tGo(1)"></button>
+    <button class="t-dot" onclick="tGo(2)"></button>
+    <button class="t-dot" onclick="tGo(3)"></button>
+  </div>
+  <div class="t-rating">
+    <span class="t-rating-s">★★★★★</span>
+    <span><strong style="color:#fff">4.8</strong> din 5 &nbsp;·&nbsp; <strong style="color:#fff">752</strong> review-uri verificate</span>
+  </div>
+</div>
+
+<!-- VERIFIED REVIEWS -->
+<div class="vrev fade">
+  <div class="vrev-pill">REVIEW-URI VERIFICATE</div>
+  <div class="vrev-h">Studiul clinic arată că 94% au respirat mai ușor.</div>
+  <div class="vrev-it">Iată cum se simte în realitate.</div>
+  <div class="tp-box">
+    <div class="tp-logo">★ Trustpilot</div>
+    <div class="tp-s">★★★★★</div>
+    <div class="tp-sc">TrustScore 4.7 &nbsp;|&nbsp; 752 review-uri</div>
+  </div>
+  <div class="rev-card">
+    <div class="rev-s">★★★★★</div>
+    <div class="rev-h">Prima sesiune fără plâns</div>
+    <div class="rev-t">Nu credeam că o să fie posibil. Fiul meu de 2 ani plângea de fiecare dată cu aparatul vechi. Cu RespiraGo a stat liniștit tot timpul.</div>
+    <div class="rev-au">Andreea M. &nbsp;<span class="rev-vf">· ✓ Cumpărător verificat</span></div>
+  </div>
+  <div class="rev-card">
+    <div class="rev-s">★★★★★</div>
+    <div class="rev-h">Serviciu clienți excepțional</div>
+    <div class="rev-t">Am întrebat despre compatibilitatea cu Pulmicort. Mi-au răspuns în 15 minute. Produsul e exact cum l-a descris medicul meu.</div>
+    <div class="rev-au">Mirela D. &nbsp;<span class="rev-vf">· ✓ Cumpărător verificat</span></div>
+  </div>
+  <div class="rev-card">
+    <div class="rev-s">★★★★★</div>
+    <div class="rev-h">L-am luat 3x și nu regret</div>
+    <div class="rev-t">Acasă, la bunici și în bagaj. Vara trecută l-am folosit în vacanță la munte fără nicio problemă.</div>
+    <div class="rev-au">Raluca T. &nbsp;<span class="rev-vf">· ✓ Cumpărător verificat</span></div>
+  </div>
+</div>
+
+<!-- CLINICAL PROOF -->
+<div class="clinical fade">
+  <!-- PLACEHOLDER: fotografie atmosferică fundal clinical (ceață/albastru) — 800×1200px minimum -->
+  <div class="clinical-bg ph" style="position:absolute;inset:0;background:#0A2540">
+    <span class="ph-label" style="color:rgba(255,255,255,.25);font-size:9px">PLACEHOLDER FUNDAL ATMOSPHERIC<br/>800 × 1200px — fotografie ceață/albastru</span>
+  </div>
+  <div class="clinical-bg-ov"></div>
+  <div class="clinical-content">
+    <div class="clinical-h">Dovedit Clinic.<br/>Testat Independent.<br/>Certificat Medical CE.</div>
+    <div class="clinical-sub">Fiecare componentă a tehnologiei MicroMist CleanFlow™ este testată independent și certificată conform standardelor europene. Particule MMAD de 1–5μm verificate spectrometric.</div>
+    <a href="#" class="clinical-btn">VEZI REZULTATELE TESTELOR</a>
+    <div class="cstats">
+      <div class="cstat">
+        <div class="cstat-h">Respirație Ușurată</div>
+        <div class="cstat-pct">94%</div>
+        <div class="cstat-desc">Din participanți au simțit o îmbunătățire notabilă după prima sesiune completă</div>
+      </div>
+      <div class="cstat">
+        <div class="cstat-h">Sesiuni Complete</div>
+        <div class="cstat-pct">97%</div>
+        <div class="cstat-desc">Față de 51% cu aparatele clasice cu compresor</div>
+      </div>
+      <div class="cstat">
+        <div class="cstat-h">Somn Neîntrerupt</div>
+        <div class="cstat-pct">91%</div>
+        <div class="cstat-desc">Sesiune de seară fără a trezi alți membri ai familiei</div>
+      </div>
+      <div class="cstat">
+        <div class="cstat-h">Recomandă Altor Părinți</div>
+        <div class="cstat-pct">99%</div>
+        <div class="cstat-desc">Pe baza rezultatelor obținute cu propriul copil</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TECHNOLOGY TABLE -->
+<div class="tech fade">
+  <div class="tech-h">Cunoaște Tehnologia<br/>MicroMist CleanFlow™.</div>
+  <div class="tech-sub">Comparație completă față de aparatele clasice cu compresor</div>
+  <button class="tech-btn">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>
+    VEZI FIȘA TEHNICĂ COMPLETĂ
+  </button>
+  <div class="tech-tbl">
+    <div class="tbl-hdr">
+      <div class="th">Parametru</div>
+      <div class="th">Clasic</div>
+      <div class="th hi">RespiraGo</div>
+    </div>
+
+    <div class="trow">
+      <div class="trow-main">
+        <div class="t-ingr">
+          <!-- PLACEHOLDER: icon 28×28px -->
+          <div class="t-ico ph" style="width:28px;height:28px;flex-shrink:0"></div>
+          <div><div class="t-ingr-name">Dimensiune Particule</div><div class="t-ingr-type">MMAD</div></div>
+        </div>
+        <div class="t-old">10–20 μm</div>
+        <div class="t-new"><div class="t-new-val">1–5 μm</div><div class="t-new-badge">+75% Eficiență</div></div>
+      </div>
+      <div class="trow-benef">Beneficiu: Penetrare bronhii &amp; alveole</div>
+    </div>
+
+    <div class="trow">
+      <div class="trow-main">
+        <div class="t-ingr">
+          <div class="t-ico ph" style="width:28px;height:28px;flex-shrink:0"></div>
+          <div><div class="t-ingr-name">Nivel Zgomot</div><div class="t-ingr-type">Decibeli</div></div>
+        </div>
+        <div class="t-old">55–65 dB</div>
+        <div class="t-new"><div class="t-new-val">&lt;38 dB</div><div class="t-new-badge">−42% Zgomot</div></div>
+      </div>
+      <div class="trow-benef">Beneficiu: Copil relaxat &amp; cooperant</div>
+    </div>
+
+    <div class="trow">
+      <div class="trow-main">
+        <div class="t-ingr">
+          <div class="t-ico ph" style="width:28px;height:28px;flex-shrink:0"></div>
+          <div><div class="t-ingr-name">Sesiuni Complete</div><div class="t-ingr-type">Rată finalizare</div></div>
+        </div>
+        <div class="t-old">51%</div>
+        <div class="t-new"><div class="t-new-val">97%</div><div class="t-new-badge">+90%</div></div>
+      </div>
+      <div class="trow-benef">Beneficiu: Tratament eficient complet</div>
+    </div>
+
+    <div class="trow">
+      <div class="trow-main">
+        <div class="t-ingr">
+          <div class="t-ico ph" style="width:28px;height:28px;flex-shrink:0"></div>
+          <div><div class="t-ingr-name">Portabilitate</div><div class="t-ingr-type">Alimentare</div></div>
+        </div>
+        <div class="t-old">Priză 220V</div>
+        <div class="t-new"><div class="t-new-val">USB-C</div><div class="t-new-badge">Baterie 3+ ses.</div></div>
+      </div>
+      <div class="trow-benef">Beneficiu: Oriunde, oricând</div>
+    </div>
+
+    <div class="trow">
+      <div class="trow-main">
+        <div class="t-ingr">
+          <div class="t-ico ph" style="width:28px;height:28px;flex-shrink:0"></div>
+          <div><div class="t-ingr-name">Reziduu Medicament</div><div class="t-ingr-type">Medicament irosit</div></div>
+        </div>
+        <div class="t-old">15–20%</div>
+        <div class="t-new"><div class="t-new-val">&lt;0.1%</div><div class="t-new-badge">−99% Irosit</div></div>
+      </div>
+      <div class="trow-benef">Beneficiu: Medicamentul valorificat 100%</div>
+    </div>
+
+    <div class="trow">
+      <div class="trow-main">
+        <div class="t-ingr">
+          <div class="t-ico ph" style="width:28px;height:28px;flex-shrink:0"></div>
+          <div><div class="t-ingr-name">Kit Complet</div><div class="t-ingr-type">Accesorii incluse</div></div>
+        </div>
+        <div class="t-old">Extra cost</div>
+        <div class="t-new"><div class="t-new-val">Inclus</div><div class="t-new-badge">GRATIS</div></div>
+      </div>
+      <div class="trow-benef">Beneficiu: Tot ce ai nevoie din prima zi</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="fcta">
+  <div class="fcta-pill">Ofertă limitată · 30% Reducere</div>
+  <div class="fcta-h">Alege pachetul tău<br/>și primești azi</div>
+  <div class="fcta-sub">Livrare 1–3 zile · Plată la livrare · 30 zile garanție</div>
+  <div class="fpkgs" id="fpkgs">
+    <div class="fpkg active" onclick="selFPkg(this,'3x Pachet Familial','249')">
+      <div class="fpkg-rb"><div class="fpkg-rbd"></div></div>
+      <div class="fpkg-name">3x Pachet Familial <span style="font-size:10px;opacity:.6">· Best Value</span></div>
+      <div class="fpkg-price">249 lei</div>
+    </div>
+    <div class="fpkg" onclick="selFPkg(this,'2x Acasă + Bunici','199')">
+      <div class="fpkg-rb"><div class="fpkg-rbd"></div></div>
+      <div class="fpkg-name">2x Acasă + Bunici <span style="font-size:10px;opacity:.6">· Popular</span></div>
+      <div class="fpkg-price">199 lei</div>
+    </div>
+    <div class="fpkg" onclick="selFPkg(this,'1x RespiraGo Acasă','149')">
+      <div class="fpkg-rb"><div class="fpkg-rbd"></div></div>
+      <div class="fpkg-name">1x RespiraGo Acasă</div>
+      <div class="fpkg-price">149 lei</div>
+    </div>
+  </div>
+  <button class="fcta-btn" id="fcta-btn" onclick="addToCart()">COMANDĂ ACUM — 249 LEI</button>
+  <div class="fcta-hint">🔒 Plată securizată &nbsp;·&nbsp; Ramburs sau card &nbsp;·&nbsp; Livrare 1–3 zile</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-logo">RespiraGo</div>
+  <div class="footer-sub">by MicroMist CleanFlow™</div>
+  <div class="footer-links">
+    <a href="#">Politica retur</a>
+    <a href="#">Confidențialitate</a>
+    <a href="#">Contact</a>
+    <a href="#">GDPR</a>
+  </div>
+  <p style="font-size:10px;color:var(--light);line-height:1.7">© 2025 RespiraGo. Dispozitiv medical CE. Nu înlocuiește sfatul medicului.<br/>Rezultatele individuale pot varia. Consultați medicul pentru indicații de tratament.</p>
+</div>
+
+<!-- STICKY BAR -->
+<div class="sbar" id="sbar">
+  <div class="sbar-in">
+    <div class="sbar-sel">
+      <div class="sbar-sel-info">
+        <div class="sbar-sel-name" id="sbar-name">3x Pachet Familial (Save 30%)</div>
+        <div class="sbar-sel-price" id="sbar-price">83 lei / aparat</div>
+      </div>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <button class="sbar-add" onclick="addToCart()">ADAUGĂ</button>
+  </div>
+</div>
+
+<script>
+/* COUNTDOWN */
+(function(){
+  const end = Date.now()+(8*3600+47*60+23)*1000;
+  function tick(){
+    const d=Math.max(0,end-Date.now());
+    const h=Math.floor(d/3600000),m=Math.floor((d%3600000)/60000),s=Math.floor((d%60000)/1000);
+    document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+    if(d>0)setTimeout(tick,1000);
+  }
+  tick();
+})();
+
+/* THUMBNAILS */
+function selThumb(el,src){
+  document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('hero-img').src=src;
+}
+function shiftThumbs(dir){
+  document.getElementById('thumbs-row').scrollBy({left:dir*130,behavior:'smooth'});
+}
+
+/* VARIANTS */
+function selVariant(el,idx,name,price){
+  document.querySelectorAll('.variant').forEach(v=>v.classList.remove('active'));
+  el.classList.add('active');
+  // also select matching pkg
+  if(idx===2) selPkg(0);
+  else if(idx===1) selPkg(1);
+  else selOtp();
+  updateCTA(name,price);
+}
+
+/* PACKAGES */
+const pkgData=[
+  {name:'3x Pachet Familial (Save 30%)',price:'249',per:'83 lei / aparat'},
+  {name:'2x Acasă + Bunici (Save 20%)',price:'199',per:'99 lei / aparat'},
+  {name:'1x RespiraGo Acasă',price:'149',per:'149 lei / aparat'}
+];
+let curPkg=0;
+
+function selPkg(idx){
+  curPkg=idx;
+  document.querySelectorAll('#pkgs .pkg').forEach((p,i)=>p.classList.toggle('active',i===idx));
+  updateCTA(pkgData[idx].name,pkgData[idx].price,pkgData[idx].per);
+}
+function selOtp(){
+  curPkg=2;
+  document.querySelectorAll('#pkgs .pkg').forEach(p=>p.classList.remove('active'));
+  updateCTA(pkgData[2].name,pkgData[2].price,pkgData[2].per);
+}
+function updateCTA(name,price,per){
+  document.getElementById('atc-btn').textContent=`ADAUGĂ ÎN COȘ — ${price} LEI`;
+  document.getElementById('fcta-btn').textContent=`COMANDĂ ACUM — ${price} LEI`;
+  document.getElementById('sbar-name').textContent=name;
+  if(per) document.getElementById('sbar-price').textContent=per;
+}
+function selFPkg(el,name,price){
+  document.querySelectorAll('#fpkgs .fpkg').forEach(f=>f.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('fcta-btn').textContent=`COMANDĂ ACUM — ${price} LEI`;
+  document.getElementById('atc-btn').textContent=`ADAUGĂ ÎN COȘ — ${price} LEI`;
+  document.getElementById('sbar-name').textContent=name;
+}
+
+/* CART */
+function addToCart(){
+  const n=document.getElementById('cart-n');
+  n.textContent=parseInt(n.textContent)+1;
+  const btn=document.getElementById('atc-btn');
+  const orig=btn.textContent;
+  btn.style.background='#2E7D32';
+  btn.textContent='✓ Adăugat în coș!';
+  setTimeout(()=>{btn.style.background='';btn.textContent=orig;},2200);
+}
+
+/* ACCORDION */
+function togAcc(btn){
+  const item=btn.closest('.acc-item');
+  const was=item.classList.contains('open');
+  document.querySelectorAll('.acc-item').forEach(i=>i.classList.remove('open'));
+  if(!was)item.classList.add('open');
+}
+
+/* TRUSTED DOTS */
+function tGo(n){
+  document.querySelectorAll('#t-dots .t-dot').forEach((d,i)=>d.classList.toggle('active',i===n));
+  const sc=document.getElementById('t-scroll');
+  const w=sc.querySelector('.t-card').offsetWidth+10;
+  sc.scrollTo({left:n*w,behavior:'smooth'});
+}
+
+/* STICKY */
+const sbar=document.getElementById('sbar');
+const atcBtn=document.getElementById('atc-btn');
+const obs=new IntersectionObserver(e=>{
+  sbar.classList.toggle('show',!e[0].isIntersecting);
+},{threshold:0});
+if(atcBtn)obs.observe(atcBtn);
+
+/* FADE */
+const fObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+},{threshold:0.07});
+document.querySelectorAll('.fade').forEach(el=>fObs.observe(el));
+</script>
+</body>
+</html>
